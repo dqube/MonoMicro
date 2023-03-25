@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using System.Reflection;
 using EasyNetQ;
 using Humanizer;
-using Micro.Attributes;
+using Micro.Abstractions.Attributes;
 
 namespace Micro.Messaging.RabbitMQ.Internals;
 

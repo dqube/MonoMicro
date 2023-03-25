@@ -1,5 +1,6 @@
-﻿using Micro.Abstractions;
-using Micro.Handlers;
+﻿using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Handlers;
+using Micro.Abstractions.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;

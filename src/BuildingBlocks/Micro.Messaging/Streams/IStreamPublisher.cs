@@ -1,4 +1,4 @@
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 
 namespace Micro.Messaging.Streams;
 

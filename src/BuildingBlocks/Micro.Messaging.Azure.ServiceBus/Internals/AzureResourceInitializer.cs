@@ -1,7 +1,7 @@
 using System.Reflection;
 using Azure.Messaging.ServiceBus.Administration;
-using Micro.Abstractions;
-using Micro.Attributes;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Attributes;
 using Microsoft.Extensions.Hosting;
 
 namespace Micro.Messaging.Azure.ServiceBus.Internals;

@@ -1,4 +1,4 @@
-namespace Micro;
+namespace Micro.Abstractions;
 
 public sealed class AppOptions
 {

@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 using Humanizer;
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 using Micro.Messaging.Brokers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

@@ -1,23 +1,24 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using Micro.Abstractions.Storage;
+using Microsoft.Extensions.Caching.Memory;
 
-namespace Micro.Storage;
+namespace Micro.Storage.Storage;
 
 internal class RequestStorage : IRequestStorage
 {
     private readonly IMemoryCache _cache;
 
-	public RequestStorage(IMemoryCache cache)
-	{
-		_cache = cache;
-	}
+    public RequestStorage(IMemoryCache cache)
+    {
+        _cache = cache;
+    }
 
-	public void Set<T>(string key, T value, TimeSpan? duration = null)
-	{
-		_cache.Set(key, value, duration ?? TimeSpan.FromSeconds(5));
-	}
+    public void Set<T>(string key, T value, TimeSpan? duration = null)
+    {
+        _cache.Set(key, value, duration ?? TimeSpan.FromSeconds(5));
+    }
 
-	public T Get<T>(string key)
-	{
-		return _cache.Get<T>(key);
-	}
+    public T Get<T>(string key)
+    {
+        return _cache.Get<T>(key);
+    }
 }

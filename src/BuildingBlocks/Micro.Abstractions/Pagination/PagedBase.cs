@@ -1,4 +1,4 @@
-﻿namespace Micro.Pagination;
+﻿namespace Micro.Abstractions.Pagination;
 
 public abstract class PagedBase
 {

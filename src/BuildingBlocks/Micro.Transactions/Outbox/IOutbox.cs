@@ -1,4 +1,4 @@
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 using Micro.Messaging;
 
 namespace Micro.Transactions.Outbox;

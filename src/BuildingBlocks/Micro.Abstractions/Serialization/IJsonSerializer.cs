@@ -1,4 +1,4 @@
-﻿namespace Micro.Serialization;
+﻿namespace Micro.Abstractions.Serialization;
 
 public interface IJsonSerializer
 {

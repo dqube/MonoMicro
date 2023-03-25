@@ -1,8 +1,8 @@
-﻿using Micro.Abstractions;
-using Micro.Handlers;
+﻿using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Micro.Dispatchers;
+namespace Micro.Abstractions.Dispatchers;
 
 internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
 {
@@ -29,7 +29,7 @@ internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
 
 #pragma warning disable CS8602
 #pragma warning disable CS8600
-        return await (Task<TResult>) method.Invoke(handler, new object[] {query, cancellationToken});
+        return await (Task<TResult>)method.Invoke(handler, new object[] { query, cancellationToken });
 #pragma warning restore CS8600
 #pragma warning restore CS8602
     }

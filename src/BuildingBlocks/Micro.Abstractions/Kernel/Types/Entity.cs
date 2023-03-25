@@ -1,4 +1,4 @@
-namespace Micro.Kernel;
+namespace Micro.Abstractions.Kernel.Types;
 
 public abstract class Entity : IEntity
 {

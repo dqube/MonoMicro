@@ -1,4 +1,4 @@
-﻿namespace Micro.Storage;
+﻿namespace Micro.Abstractions.Storage;
 
 public interface IRequestStorage
 {

@@ -1,4 +1,5 @@
-using Micro.Handlers;
+using Micro.Abstractions;
+using Micro.Abstractions.Handlers;
 using Micro.Observability.Logging.Decorators;
 using Micro.Observability.Logging.Middlewares;
 using Microsoft.AspNetCore.Builder;

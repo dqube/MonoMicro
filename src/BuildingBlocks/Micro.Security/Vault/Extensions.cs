@@ -1,5 +1,6 @@
+using Micro.Abstractions;
 using Micro.Security.Vault.Internals;
-using Micro.Serialization;
+using Micro.Abstractions.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Memory;

@@ -1,8 +1,8 @@
-﻿using Micro.Abstractions;
-using Micro.Handlers;
+﻿using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Micro.Dispatchers;
+namespace Micro.Abstractions.Dispatchers;
 
 internal sealed class InMemoryEventDispatcher : IEventDispatcher
 {

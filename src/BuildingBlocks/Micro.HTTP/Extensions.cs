@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using Micro.Abstractions;
 using Micro.HTTP.LoadBalancing;
 using Micro.HTTP.Logging;
 using Micro.HTTP.ServiceDiscovery;

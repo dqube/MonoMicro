@@ -1,4 +1,5 @@
 using Consul;
+using Micro.Abstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

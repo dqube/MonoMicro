@@ -1,4 +1,4 @@
-namespace Micro.Identity;
+namespace Micro.Abstractions.Identity;
 
 public interface IIdGen
 {

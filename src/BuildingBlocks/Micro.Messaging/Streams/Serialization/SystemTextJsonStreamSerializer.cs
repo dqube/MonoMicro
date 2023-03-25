@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 
 namespace Micro.Messaging.Streams.Serialization;
 

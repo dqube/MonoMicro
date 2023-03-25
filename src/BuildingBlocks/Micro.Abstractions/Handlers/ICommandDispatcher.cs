@@ -1,6 +1,6 @@
-﻿using Micro.Abstractions;
+﻿using Micro.Abstractions.Abstractions;
 
-namespace Micro.Handlers;
+namespace Micro.Abstractions.Handlers;
 
 public interface ICommandDispatcher
 {

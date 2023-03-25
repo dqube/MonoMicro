@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Micro.Abstractions;
 using Microsoft.Extensions.Configuration;
 
 namespace Micro.Testing;

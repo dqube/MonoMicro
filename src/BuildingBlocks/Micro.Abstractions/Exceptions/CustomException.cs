@@ -1,4 +1,4 @@
-﻿namespace Micro.Exceptions;
+﻿namespace Micro.Abstractions.Exceptions;
 
 public abstract class CustomException : Exception
 {

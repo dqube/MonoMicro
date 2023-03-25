@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Micro.Abstractions.Modules;
+using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
 namespace Micro.Modules;

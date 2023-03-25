@@ -1,7 +1,7 @@
-using Micro.Abstractions;
-using Micro.Attributes;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Handlers;
+using Micro.Abstractions.Attributes;
 using Micro.Contexts;
-using Micro.Handlers;
 using Micro.Messaging.Exceptions;
 
 namespace Micro.Messaging.RabbitMQ.Exceptions;

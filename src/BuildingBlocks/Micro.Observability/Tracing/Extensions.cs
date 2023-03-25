@@ -1,4 +1,5 @@
-﻿using Micro.Messaging.Brokers;
+﻿using Micro.Abstractions;
+using Micro.Messaging.Brokers;
 using Micro.Messaging.RabbitMQ.Internals;
 using Micro.Observability.Tracing.Decorators;
 using Microsoft.Extensions.Configuration;

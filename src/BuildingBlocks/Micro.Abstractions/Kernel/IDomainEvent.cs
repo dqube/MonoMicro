@@ -1,4 +1,4 @@
-﻿namespace Micro.Kernel;
+﻿namespace Micro.Abstractions.Kernel;
 
 public interface IDomainEvent
 {

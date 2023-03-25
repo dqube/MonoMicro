@@ -1,4 +1,4 @@
-﻿namespace Micro.Modules;
+﻿namespace Micro.Abstractions.Modules;
 
 public interface IModuleClient
 {

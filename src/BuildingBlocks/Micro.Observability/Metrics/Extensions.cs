@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using Micro.Abstractions;
 using Micro.Messaging.Brokers;
 using Micro.Observability.Metrics.Decorators;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
+using System.Reflection;
 
 namespace Micro.Observability.Metrics;
 

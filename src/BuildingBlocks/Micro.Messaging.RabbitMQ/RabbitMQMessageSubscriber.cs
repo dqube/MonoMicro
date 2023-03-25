@@ -1,12 +1,12 @@
 using System.Reflection;
 using EasyNetQ;
-using Micro.Abstractions;
-using Micro.Attributes;
-using Micro.Handlers;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Attributes;
+using Micro.Abstractions.Handlers;
 using Micro.Messaging.RabbitMQ.Internals;
 using Micro.Messaging.Subscribers;
 using Microsoft.Extensions.DependencyInjection;
-using IMessage = Micro.Abstractions.IMessage;
+using IMessage = Micro.Abstractions.Abstractions.IMessage;
 
 namespace Micro.Messaging.RabbitMQ;
 

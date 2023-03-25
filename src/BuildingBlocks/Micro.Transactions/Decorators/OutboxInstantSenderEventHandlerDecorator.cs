@@ -1,6 +1,6 @@
-using Micro.Abstractions;
-using Micro.Attributes;
-using Micro.Handlers;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Handlers;
+using Micro.Abstractions.Attributes;
 using Micro.Transactions.Outbox;
 
 namespace Micro.Transactions.Decorators;

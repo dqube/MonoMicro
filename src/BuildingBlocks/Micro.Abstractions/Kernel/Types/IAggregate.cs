@@ -1,7 +1,7 @@
 ﻿using Micro.Abstractions;
-using Micro.Kernel;
+using Micro.Abstractions.Kernel;
 
-namespace Micro.Kernel;
+namespace Micro.Abstractions.Kernel.Types;
 
 public interface IAggregate : IEntity
 {

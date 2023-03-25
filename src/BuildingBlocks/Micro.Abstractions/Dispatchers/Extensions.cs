@@ -1,9 +1,9 @@
-﻿using Micro.Attributes;
-using Micro.Handlers;
-using Micro.Kernel;
+﻿using Micro.Abstractions.Attributes;
+using Micro.Abstractions.Handlers;
+using Micro.Abstractions.Kernel;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Micro.Dispatchers;
+namespace Micro.Abstractions.Dispatchers;
 
 public static class Extensions
 {
@@ -12,7 +12,7 @@ public static class Extensions
         var assemblies = AppDomain.CurrentDomain.GetAssemblies()
             .Where(x => x.FullName is not null && x.FullName.Contains(project))
             .ToArray();
-        
+
         services.Scan(s => s.FromAssemblies(assemblies)
             .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>))
                 .WithoutAttribute<DecoratorAttribute>())

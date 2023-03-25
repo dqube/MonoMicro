@@ -1,6 +1,7 @@
 using Azure.Messaging.ServiceBus;
 using Azure.Messaging.ServiceBus.Administration;
 using Humanizer;
+using Micro.Abstractions;
 using Micro.Contexts.Accessors;
 using Micro.Messaging.Azure.ServiceBus.Internals;
 using Micro.Messaging.Clients;

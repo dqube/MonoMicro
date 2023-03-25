@@ -1,4 +1,5 @@
-﻿using Micro.DAL.Postgres.Internals;
+﻿using Micro.Abstractions;
+using Micro.DAL.Postgres.Internals;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

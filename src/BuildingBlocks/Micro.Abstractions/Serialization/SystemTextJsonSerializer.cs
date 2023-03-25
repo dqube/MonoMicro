@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Micro.Serialization;
+namespace Micro.Abstractions.Serialization;
 
 public sealed class SystemTextJsonSerializer : IJsonSerializer
 {
@@ -9,7 +9,7 @@ public sealed class SystemTextJsonSerializer : IJsonSerializer
     {
         PropertyNameCaseInsensitive = true,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        Converters = {new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)}
+        Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) }
     };
 
     public string Serialize<T>(T value) => JsonSerializer.Serialize(value, _options);

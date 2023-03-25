@@ -1,11 +1,11 @@
 using System.Reflection;
 using Azure.Messaging.ServiceBus;
-using Micro.Abstractions;
-using Micro.Attributes;
-using Micro.Handlers;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Attributes;
+using Micro.Abstractions.Handlers;
+using Micro.Abstractions.Serialization;
 using Micro.Messaging.Azure.ServiceBus.Internals;
 using Micro.Messaging.Subscribers;
-using Micro.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 

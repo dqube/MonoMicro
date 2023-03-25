@@ -1,7 +1,7 @@
-﻿using Micro.Kernel;
+﻿using Micro.Abstractions.Kernel;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Micro.Dispatchers;
+namespace Micro.Abstractions.Dispatchers;
 
 public sealed class DomainEventDispatcher : IDomainEventDispatcher
 {
@@ -15,7 +15,7 @@ public sealed class DomainEventDispatcher : IDomainEventDispatcher
 
     public Task DispatchAsync(IDomainEvent[] events, CancellationToken cancellationToken = default)
         => DispatchAsync(cancellationToken, events);
-        
+
     private async Task DispatchAsync(CancellationToken cancellationToken, params IDomainEvent[] events)
     {
         if (events is null || !events.Any())
@@ -30,9 +30,9 @@ public sealed class DomainEventDispatcher : IDomainEventDispatcher
             var handlers = scope.ServiceProvider.GetServices(handlerType);
 
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-            var tasks = handlers.Select(x => (Task) handlerType
+            var tasks = handlers.Select(x => (Task)handlerType
                 .GetMethod(nameof(IDomainEventHandler<IDomainEvent>.HandleAsync))
-                ?.Invoke(x, new object[] {@event, cancellationToken}));
+                ?.Invoke(x, new object[] { @event, cancellationToken }));
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
 #pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.

@@ -1,6 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Micro.Time;
+using Micro.Abstractions.Time;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 

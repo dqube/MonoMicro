@@ -1,6 +1,6 @@
-﻿using Micro.Abstractions;
+﻿using Micro.Abstractions.Abstractions;
 
-namespace Micro.Pagination;
+namespace Micro.Abstractions.Pagination;
 
 public interface IPagedQuery<T> : IQuery<T>
 {

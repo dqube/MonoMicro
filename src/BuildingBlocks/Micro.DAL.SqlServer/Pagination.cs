@@ -1,4 +1,4 @@
-using Micro.Pagination;
+using Micro.Abstractions.Pagination;
 using Microsoft.EntityFrameworkCore;
 
 namespace Micro.DAL.SqlServer;

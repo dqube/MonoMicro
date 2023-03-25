@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Net;
 using Humanizer;
-using Micro.Exceptions;
+using Micro.Abstractions.Exceptions;
 
 namespace Micro.API.Exceptions.Mappers;
 

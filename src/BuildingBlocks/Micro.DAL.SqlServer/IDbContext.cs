@@ -1,4 +1,4 @@
-using Micro.Kernel;
+using Micro.Abstractions.Kernel;
 using Microsoft.EntityFrameworkCore;
 
 namespace Micro.DAL.SqlServer;

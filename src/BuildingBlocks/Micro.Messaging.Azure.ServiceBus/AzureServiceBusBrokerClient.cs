@@ -1,11 +1,11 @@
 using System.Collections.Concurrent;
 using Azure.Messaging.ServiceBus;
 using Humanizer;
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Serialization;
 using Micro.Contexts.Accessors;
 using Micro.Messaging.Azure.ServiceBus.Internals;
 using Micro.Messaging.Clients;
-using Micro.Serialization;
 using Microsoft.Extensions.Logging;
 
 namespace Micro.Messaging.Azure.ServiceBus;

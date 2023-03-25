@@ -1,10 +1,10 @@
-using System.Collections.Concurrent;
 using Humanizer;
-using Micro.Abstractions;
-using Micro.Attributes;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Attributes;
+using Micro.Abstractions.Handlers;
 using Micro.Contexts;
-using Micro.Handlers;
 using Microsoft.Extensions.Logging;
+using System.Collections.Concurrent;
 
 namespace Micro.Observability.Logging.Decorators;
 

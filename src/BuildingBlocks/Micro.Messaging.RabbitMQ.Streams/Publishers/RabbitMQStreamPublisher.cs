@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 using Humanizer;
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 using Micro.Messaging.Streams;
 using Micro.Messaging.Streams.Serialization;
 using Microsoft.Extensions.Logging;

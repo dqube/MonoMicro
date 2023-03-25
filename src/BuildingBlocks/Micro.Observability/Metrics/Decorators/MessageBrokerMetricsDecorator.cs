@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics.Metrics;
 using Humanizer;
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 using Micro.Messaging.Brokers;
 
 namespace Micro.Observability.Metrics.Decorators;

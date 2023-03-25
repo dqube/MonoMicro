@@ -1,4 +1,4 @@
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace Micro.Messaging.RabbitMQ.Internals;

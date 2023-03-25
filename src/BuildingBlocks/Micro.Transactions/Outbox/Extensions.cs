@@ -1,3 +1,4 @@
+using Micro.Abstractions;
 using Micro.Messaging.Brokers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

@@ -1,4 +1,6 @@
-﻿namespace Micro.DAL.SqlServer;
+﻿using Micro.Abstractions;
+
+namespace Micro.DAL.SqlServer;
 
 internal class UnitOfWorkTypeRegistry
 {

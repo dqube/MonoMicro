@@ -1,7 +1,7 @@
-﻿
-using Micro.Abstractions;
+﻿using Micro.Abstractions;
+using Micro.Abstractions.Kernel;
 
-namespace Micro.Kernel;
+namespace Micro.Abstractions.Kernel.Types;
 
 public abstract class Aggregate : Aggregate<long>
 {
@@ -31,5 +31,5 @@ public abstract class Aggregate<TId> : Entity, IAggregate<TId>
     }
     public long Version { get; set; } = -1;
 
-    public TId Id { get; protected set;  }
+    public TId Id { get; protected set; }
 }

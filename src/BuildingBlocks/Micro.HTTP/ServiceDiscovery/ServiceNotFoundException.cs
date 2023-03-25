@@ -1,4 +1,4 @@
-using Micro.Exceptions;
+using Micro.Abstractions.Exceptions;
 
 namespace Micro.HTTP.ServiceDiscovery;
 

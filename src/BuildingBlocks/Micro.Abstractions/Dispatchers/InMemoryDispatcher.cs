@@ -1,7 +1,7 @@
-using Micro.Abstractions;
-using Micro.Handlers;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Handlers;
 
-namespace Micro.Dispatchers;
+namespace Micro.Abstractions.Dispatchers;
 
 internal sealed class InMemoryDispatcher : IDispatcher
 {

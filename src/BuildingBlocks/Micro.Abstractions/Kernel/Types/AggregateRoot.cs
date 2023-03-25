@@ -1,4 +1,6 @@
-﻿namespace Micro.Kernel;
+﻿using Micro.Abstractions.Kernel;
+
+namespace Micro.Abstractions.Kernel.Types;
 
 public abstract class AggregateRoot<T>
 {

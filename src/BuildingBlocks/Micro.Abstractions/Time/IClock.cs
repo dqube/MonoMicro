@@ -1,4 +1,4 @@
-namespace Micro.Time;
+namespace Micro.Abstractions.Time;
 
 public interface IClock
 {

@@ -3,7 +3,7 @@ using System.Reflection;
 using EasyNetQ;
 using EasyNetQ.Consumer;
 using Humanizer;
-using Micro.Attributes;
+using Micro.Abstractions.Attributes;
 using Micro.Contexts.Accessors;
 using Micro.Contexts.Providers;
 using Micro.Messaging.Brokers;
@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using IMessage = Micro.Abstractions.IMessage;
+using IMessage = Micro.Abstractions.Abstractions.IMessage;
 
 namespace Micro.Testing;
 

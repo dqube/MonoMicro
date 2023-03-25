@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Micro.Abstractions.Modules;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Micro.Modules;
 

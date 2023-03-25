@@ -1,6 +1,6 @@
 using IdGen;
 
-namespace Micro.Identity;
+namespace Micro.Abstractions.Identity;
 
 internal sealed class IdentityGenerator : IIdGen
 {

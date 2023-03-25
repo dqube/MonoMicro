@@ -4,7 +4,7 @@ using Humanizer;
 using Micro.Contexts.Accessors;
 using Micro.Messaging.Clients;
 using Microsoft.Extensions.Logging;
-using IMessage = Micro.Abstractions.IMessage;
+using IMessage = Micro.Abstractions.Abstractions.IMessage;
 
 namespace Micro.Messaging.RabbitMQ;
 

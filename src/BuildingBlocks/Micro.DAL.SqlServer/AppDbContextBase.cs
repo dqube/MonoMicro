@@ -1,4 +1,5 @@
-using Micro.Kernel;
+using Micro.Abstractions.Kernel;
+using Micro.Abstractions.Kernel.Types;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;

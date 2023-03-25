@@ -1,4 +1,4 @@
-using Micro.Handlers;
+using Micro.Abstractions.Handlers;
 using Micro.Transactions.Decorators;
 using Microsoft.Extensions.DependencyInjection;
 

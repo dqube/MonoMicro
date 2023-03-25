@@ -1,5 +1,6 @@
 ﻿using Micro.Abstractions;
-using Micro.Attributes;
+using Micro.Abstractions.Attributes;
+using Micro.Abstractions.Modules;
 using System.Collections.Concurrent;
 using System.Reflection;
 

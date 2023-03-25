@@ -1,7 +1,7 @@
-using Micro.Abstractions;
-using Micro.Attributes;
+using Micro.Abstractions.Abstractions;
+using Micro.Abstractions.Handlers;
+using Micro.Abstractions.Attributes;
 using Micro.DAL.Postgres;
-using Micro.Handlers;
 
 namespace Micro.Transactions.Decorators;
 

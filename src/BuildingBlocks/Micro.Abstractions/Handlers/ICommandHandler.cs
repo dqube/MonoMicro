@@ -1,6 +1,6 @@
-﻿using Micro.Abstractions;
+﻿using Micro.Abstractions.Abstractions;
 
-namespace Micro.Handlers;
+namespace Micro.Abstractions.Handlers;
 
 public interface ICommandHandler<in TCommand> where TCommand : class, ICommand
 {

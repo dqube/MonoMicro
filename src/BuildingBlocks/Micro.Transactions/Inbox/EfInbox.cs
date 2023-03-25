@@ -1,4 +1,4 @@
-using Micro.Time;
+using Micro.Abstractions.Time;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

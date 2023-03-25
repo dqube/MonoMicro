@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using Humanizer;
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 using Micro.Contexts;
 using Micro.Messaging.RabbitMQ.Internals;
 

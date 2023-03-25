@@ -1,3 +1,4 @@
+using Micro.Abstractions;
 using Micro.Messaging.RabbitMQ.Streams.Publishers;
 using Micro.Messaging.RabbitMQ.Streams.Subscribers;
 using Micro.Messaging.Streams;

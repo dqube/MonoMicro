@@ -1,8 +1,9 @@
 using EasyNetQ;
 using EasyNetQ.Consumer;
 using Humanizer;
+using Micro.Abstractions;
+using Micro.Abstractions.Handlers;
 using Micro.Contexts.Accessors;
-using Micro.Handlers;
 using Micro.Messaging.Clients;
 using Micro.Messaging.RabbitMQ.Exceptions;
 using Micro.Messaging.RabbitMQ.Internals;

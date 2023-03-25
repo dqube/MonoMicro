@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Micro.Abstractions;
 using Micro.Auth.JWT;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

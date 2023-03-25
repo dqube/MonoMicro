@@ -1,4 +1,4 @@
-using Micro.Serialization;
+using Micro.Abstractions.Serialization;
 using Microsoft.Extensions.Options;
 using VaultSharp;
 

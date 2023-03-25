@@ -1,13 +1,13 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using Micro.Identity;
-using Micro.Serialization;
-using Micro.Time;
+using Micro.Abstractions.Identity;
+using Micro.Abstractions.Serialization;
+using Micro.Abstractions.Time;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace Micro;
+namespace Micro.Abstractions;
 
 public static class Extensions
 {

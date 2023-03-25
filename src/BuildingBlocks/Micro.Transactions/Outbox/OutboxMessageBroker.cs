@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 using Humanizer;
-using Micro.Abstractions;
+using Micro.Abstractions.Abstractions;
 using Micro.Contexts;
 using Micro.Messaging;
 using Micro.Messaging.Brokers;

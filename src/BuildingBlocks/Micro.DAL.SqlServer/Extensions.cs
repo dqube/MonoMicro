@@ -1,5 +1,6 @@
-﻿using Micro.DAL.SqlServer.Internals;
-using Micro.Kernel;
+﻿using Micro.Abstractions;
+using Micro.Abstractions.Kernel.Types;
+using Micro.DAL.SqlServer.Internals;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Extensions.Configuration;

@@ -1,3 +1,4 @@
+using Micro.Abstractions;
 using Micro.HTTP.ServiceDiscovery;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

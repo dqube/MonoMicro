@@ -2,7 +2,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Micro.Auth;
 using Micro.Auth.JWT;
-using Micro.Time;
+using Micro.Abstractions.Time;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 

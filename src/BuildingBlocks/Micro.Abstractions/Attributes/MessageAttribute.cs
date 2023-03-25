@@ -1,4 +1,4 @@
-namespace Micro.Attributes;
+namespace Micro.Abstractions.Attributes;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
 public class MessageAttribute : Attribute

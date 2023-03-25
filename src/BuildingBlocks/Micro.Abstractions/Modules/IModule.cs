@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Micro.Modules;
+namespace Micro.Abstractions.Modules;
 
 public interface IModule
 {

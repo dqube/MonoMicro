@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Reflection;
 using Humanizer;
-using Micro.Attributes;
+using Micro.Abstractions.Attributes;
 
 namespace Micro.Messaging.Azure.ServiceBus.Internals;
 
