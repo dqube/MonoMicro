@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Micro\Micro.csproj" />
+        <InternalsVisibleTo Include="Micro.Testing" />
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="Micro.Testing" />
+      <ProjectReference Include="..\Micro.Abstractions\Micro.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>

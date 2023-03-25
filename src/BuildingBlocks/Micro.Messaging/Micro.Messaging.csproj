@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Micro.Abstractions\Micro.Abstractions.csproj" />
         <ProjectReference Include="..\Micro.Contexts\Micro.Contexts.csproj" />
-        <ProjectReference Include="..\Micro\Micro.csproj" />
     </ItemGroup>
 
     <ItemGroup>

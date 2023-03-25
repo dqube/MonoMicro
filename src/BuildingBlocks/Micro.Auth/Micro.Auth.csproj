@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Micro\Micro.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="6.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.12" />
@@ -18,6 +14,10 @@
   
   <ItemGroup>
     <InternalsVisibleTo Include="Micro.Testing" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Micro.Abstractions\Micro.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
