@@ -1,0 +1,31 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Messaging.RabbitMQ.Streams</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Messaging.RabbitMQ.Streams</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Messaging.RabbitMQ.Streams.csproj" File="Micro.Messaging.RabbitMQ.Streams.csproj" ReplaceParameters="true">
+      <Folder Name="Publishers" TargetFolderName="Publishers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="RabbitMQStreamPublisher.cs">RabbitMQStreamPublisher.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Subscribers" TargetFolderName="Subscribers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="RabbitMQStreamSubscriber.cs">RabbitMQStreamSubscriber.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="RabbitMQStreamsOptions.cs">RabbitMQStreamsOptions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="RabbitStreamInitializer.cs">RabbitStreamInitializer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="RabbitStreamManager.cs">RabbitStreamManager.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

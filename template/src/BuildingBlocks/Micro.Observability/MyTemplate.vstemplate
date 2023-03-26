@@ -1,0 +1,52 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Observability</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Observability</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Observability.csproj" File="Micro.Observability.csproj" ReplaceParameters="true">
+      <Folder Name="Logging" TargetFolderName="Logging">
+        <Folder Name="Decorators" TargetFolderName="Decorators">
+          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingCommandHandlerDecorator.cs">LoggingCommandHandlerDecorator.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingEventHandlerDecorator.cs">LoggingEventHandlerDecorator.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Middlewares" TargetFolderName="Middlewares">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ContextLoggingMiddleware.cs">ContextLoggingMiddleware.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SerilogOptions.cs">SerilogOptions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Metrics" TargetFolderName="Metrics">
+        <Folder Name="Decorators" TargetFolderName="Decorators">
+          <ProjectItem ReplaceParameters="true" TargetFileName="MessageBrokerMetricsDecorator.cs">MessageBrokerMetricsDecorator.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMetrics.cs">IMetrics.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MeterAttribute.cs">MeterAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Metrics.cs">Metrics.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MetricsOptions.cs">MetricsOptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ObservableValue.cs">ObservableValue.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Tracing" TargetFolderName="Tracing">
+        <Folder Name="Decorators" TargetFolderName="Decorators">
+          <ProjectItem ReplaceParameters="true" TargetFileName="MessageBrokerTracingDecorator.cs">MessageBrokerTracingDecorator.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="MessageHandlerTracingDecorator.cs">MessageHandlerTracingDecorator.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TracingOptions.cs">TracingOptions.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

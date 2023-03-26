@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\$ext_projectname$.API\$ext_projectname$.API.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Auth\$ext_projectname$.Auth.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.DAL.Mongo\$ext_projectname$.DAL.Mongo.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.DAL.Postgres\$ext_projectname$.DAL.Postgres.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.DAL.SqlServer\$ext_projectname$.DAL.SqlServer.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.HTTP\$ext_projectname$.HTTP.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Messaging.Azure.ServiceBus\$ext_projectname$.Messaging.Azure.ServiceBus.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Messaging.RabbitMQ.Streams\$ext_projectname$.Messaging.RabbitMQ.Streams.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Messaging.RabbitMQ\$ext_projectname$.Messaging.RabbitMQ.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Modules\$ext_projectname$.Modules.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Observability\$ext_projectname$.Observability.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Security\$ext_projectname$.Security.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Storage\$ext_projectname$.Storage.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Transactions\$ext_projectname$.Transactions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Figgle" Version="0.5.1" />
+    </ItemGroup>
+
+</Project>

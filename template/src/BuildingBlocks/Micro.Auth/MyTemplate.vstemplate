@@ -1,0 +1,31 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Auth</Name>
+    <Description>
+    </Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Auth</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Auth.csproj" File="Micro.Auth.csproj" ReplaceParameters="true">
+      <Folder Name="JWT" TargetFolderName="JWT">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IJsonWebTokenManager.cs">IJsonWebTokenManager.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="JsonWebToken.cs">JsonWebToken.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="JsonWebTokenManager.cs">JsonWebTokenManager.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="JsonWebTokenPayload.cs">JsonWebTokenPayload.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SecurityKeyDetails.cs">SecurityKeyDetails.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="AuthOptions.cs">AuthOptions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

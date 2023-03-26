@@ -1,0 +1,94 @@
+﻿<VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Clean Architecture Template</Name>
+    <Description>A project template for building ASP.NET Core WebAPI with cross cuttings features for modular monolith and microservice architecture</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>CleanArchitecture</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+      <SolutionFolder Name="src">
+        <SolutionFolder Name="BuildingBlocks">
+          <ProjectTemplateLink ProjectName="$projectname$.Abstractions" CopyParameters="true">
+            src\BuildingBlocks\Micro.Abstractions\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.API" CopyParameters="true">
+            src\BuildingBlocks\Micro.API\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Auth" CopyParameters="true">
+            src\BuildingBlocks\Micro.Auth\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Contexts" CopyParameters="true">
+            src\BuildingBlocks\Micro.Contexts\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.DAL.Mongo" CopyParameters="true">
+            src\BuildingBlocks\Micro.DAL.Mongo\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.DAL.Postgres" CopyParameters="true">
+            src\BuildingBlocks\Micro.DAL.Postgres\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.DAL.SqlServer" CopyParameters="true">
+            src\BuildingBlocks\Micro.DAL.SqlServer\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Framework" CopyParameters="true">
+            src\BuildingBlocks\Micro.Framework\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.HTTP" CopyParameters="true">
+            src\BuildingBlocks\Micro.HTTP\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Messaging" CopyParameters="true">
+            src\BuildingBlocks\Micro.Messaging\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Messaging.Azure.ServiceBus" CopyParameters="true">
+            src\BuildingBlocks\Micro.Messaging.Azure.ServiceBus\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Messaging.RabbitMQ" CopyParameters="true">
+            src\BuildingBlocks\Micro.Messaging.RabbitMQ\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Messaging.RabbitMQ.Streams" CopyParameters="true">
+            src\BuildingBlocks\Micro.Messaging.RabbitMQ.Streams\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Modules" CopyParameters="true">
+            src\BuildingBlocks\Micro.Modules\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Observability" CopyParameters="true">
+            src\BuildingBlocks\Micro.Observability\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Security" CopyParameters="true">
+            src\BuildingBlocks\Micro.Security\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Storage" CopyParameters="true">
+            src\BuildingBlocks\Micro.Storage\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Testing" CopyParameters="true">
+            src\BuildingBlocks\Micro.Testing\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Transactions" CopyParameters="true">
+            src\BuildingBlocks\Micro.Transactions\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+        </SolutionFolder>
+        <SolutionFolder Name="APIGateways">
+
+        </SolutionFolder>
+        <SolutionFolder Name="Services">
+
+        </SolutionFolder>
+        <SolutionFolder Name="Modules">
+
+        </SolutionFolder>
+        <SolutionFolder Name="Shared">
+
+        </SolutionFolder>
+      </SolutionFolder>
+
+    </ProjectCollection>
+  </TemplateContent>
+</VSTemplate>

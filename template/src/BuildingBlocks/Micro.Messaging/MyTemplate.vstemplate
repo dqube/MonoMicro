@@ -1,0 +1,54 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Messaging</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Messaging</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Messaging.csproj" File="Micro.Messaging.csproj" ReplaceParameters="true">
+      <Folder Name="Brokers" TargetFolderName="Brokers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessageBroker.cs">IMessageBroker.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessageBroker.cs">MessageBroker.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Clients" TargetFolderName="Clients">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DefaultMessageBrokerClient.cs">DefaultMessageBrokerClient.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessageBrokerClient.cs">IMessageBrokerClient.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Exceptions" TargetFolderName="Exceptions">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DefaultMessagingExceptionPolicyHandler.cs">DefaultMessagingExceptionPolicyHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DefaultMessagingExceptionPolicyResolver.cs">DefaultMessagingExceptionPolicyResolver.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FailedMessage.cs">FailedMessage.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessagingExceptionPolicyHandler.cs">IMessagingExceptionPolicyHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessagingExceptionPolicyResolver.cs">IMessagingExceptionPolicyResolver.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessageExceptionPolicy.cs">MessageExceptionPolicy.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Streams" TargetFolderName="Streams">
+        <Folder Name="Serialization" TargetFolderName="Serialization">
+          <ProjectItem ReplaceParameters="true" TargetFileName="IStreamSerializer.cs">IStreamSerializer.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="SystemTextJsonStreamSerializer.cs">SystemTextJsonStreamSerializer.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DefaultStreamPublisher.cs">DefaultStreamPublisher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DefaultStreamSubscriber.cs">DefaultStreamSubscriber.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IStreamPublisher.cs">IStreamPublisher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IStreamSubscriber.cs">IStreamSubscriber.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Subscribers" TargetFolderName="Subscribers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DefaultMessageSubscriber.cs">DefaultMessageSubscriber.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessageSubscriber.cs">IMessageSubscriber.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MessageEnvelope.cs">MessageEnvelope.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MessagingOptions.cs">MessagingOptions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

@@ -1,0 +1,30 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Messaging.Azure.ServiceBus</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Messaging.Azure.ServiceBus</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Messaging.Azure.ServiceBus.csproj" File="Micro.Messaging.Azure.ServiceBus.csproj" ReplaceParameters="true">
+      <Folder Name="Internals" TargetFolderName="Internals">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AzureResourceInitializer.cs">AzureResourceInitializer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AzureServiceBusBrokerConventions.cs">AzureServiceBusBrokerConventions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IBrokerConventions.cs">IBrokerConventions.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="AzureServiceBusBrokerClient.cs">AzureServiceBusBrokerClient.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="AzureServiceBusMessageSubscriber.cs">AzureServiceBusMessageSubscriber.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="AzureServiceBusOptions.cs">AzureServiceBusOptions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

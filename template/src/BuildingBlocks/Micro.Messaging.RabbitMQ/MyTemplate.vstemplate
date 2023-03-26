@@ -1,0 +1,38 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Messaging.RabbitMQ</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Messaging.RabbitMQ</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Messaging.RabbitMQ.csproj" File="Micro.Messaging.RabbitMQ.csproj" ReplaceParameters="true">
+      <Folder Name="Exceptions" TargetFolderName="Exceptions">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessagingErrorHandlingCommandHandlerDecorator.cs">MessagingErrorHandlingCommandHandlerDecorator.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessagingErrorHandlingEventHandlerDecorator.cs">MessagingErrorHandlingEventHandlerDecorator.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Internals" TargetFolderName="Internals">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomConventions.cs">CustomConventions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomHandlerCollectionFactory.cs">CustomHandlerCollectionFactory.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomMessageSerializationStrategy.cs">CustomMessageSerializationStrategy.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessageHandler.cs">IMessageHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessageTypeRegistry.cs">IMessageTypeRegistry.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessageHandler.cs">MessageHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessageTypeRegistry.cs">MessageTypeRegistry.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="RabbitMQBrokerClient.cs">RabbitMQBrokerClient.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="RabbitMQMessageSubscriber.cs">RabbitMQMessageSubscriber.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="RabbitMQOptions.cs">RabbitMQOptions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

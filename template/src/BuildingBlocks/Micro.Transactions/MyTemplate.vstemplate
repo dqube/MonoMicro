@@ -1,0 +1,48 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Transactions</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Transactions</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Transactions.csproj" File="Micro.Transactions.csproj" ReplaceParameters="true">
+      <Folder Name="Decorators" TargetFolderName="Decorators">
+        <ProjectItem ReplaceParameters="true" TargetFileName="OutboxInstantSenderCommandHandlerDecorator.cs">OutboxInstantSenderCommandHandlerDecorator.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="OutboxInstantSenderEventHandlerDecorator.cs">OutboxInstantSenderEventHandlerDecorator.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TransactionalCommandHandlerDecorator.cs">TransactionalCommandHandlerDecorator.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TransactionalEventHandlerDecorator.cs">TransactionalEventHandlerDecorator.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Inbox" TargetFolderName="Inbox">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EfInbox.cs">EfInbox.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IInbox.cs">IInbox.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InboxCleaner.cs">InboxCleaner.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InboxCommandHandlerDecorator.cs">InboxCommandHandlerDecorator.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InboxEventHandlerDecorator.cs">InboxEventHandlerDecorator.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InboxMessage.cs">InboxMessage.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InboxOptions.cs">InboxOptions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Outbox" TargetFolderName="Outbox">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EfOutbox.cs">EfOutbox.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IOutbox.cs">IOutbox.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="OutboxCleaner.cs">OutboxCleaner.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="OutboxMessage.cs">OutboxMessage.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="OutboxMessageBroker.cs">OutboxMessageBroker.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="OutboxOptions.cs">OutboxOptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="OutboxSender.cs">OutboxSender.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

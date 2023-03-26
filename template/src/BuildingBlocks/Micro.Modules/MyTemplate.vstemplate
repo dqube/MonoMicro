@@ -1,0 +1,34 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Modules</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Modules</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Modules.csproj" File="Micro.Modules.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="IModuleRegistry.cs">IModuleRegistry.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="IModuleSerializer.cs">IModuleSerializer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="JsonModuleSerializer.cs">JsonModuleSerializer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MessagePackModuleSerializer.cs">MessagePackModuleSerializer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ModuleBroadcastRegistration.cs">ModuleBroadcastRegistration.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ModuleClient.cs">ModuleClient.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ModuleInfo.cs">ModuleInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ModuleInfoProvider.cs">ModuleInfoProvider.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ModuleLoader.cs">ModuleLoader.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ModuleRegistry.cs">ModuleRegistry.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ModuleRequestRegistration.cs">ModuleRequestRegistration.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ModuleSubscriber.cs">ModuleSubscriber.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

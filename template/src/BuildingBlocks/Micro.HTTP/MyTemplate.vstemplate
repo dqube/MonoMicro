@@ -1,0 +1,42 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.HTTP</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.HTTP</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.HTTP.csproj" File="Micro.HTTP.csproj" ReplaceParameters="true">
+      <Folder Name="LoadBalancing" TargetFolderName="LoadBalancing">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FabioHttpHandler.cs">FabioHttpHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FabioOptions.cs">FabioOptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FabioServiceDiscoveryRegistration.cs">FabioServiceDiscoveryRegistration.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Logging" TargetFolderName="Logging">
+        <ProjectItem ReplaceParameters="true" TargetFileName="HttpLoggingFilter.cs">HttpLoggingFilter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LoggingScopeHttpHandler.cs">LoggingScopeHttpHandler.cs</ProjectItem>
+      </Folder>
+      <Folder Name="ServiceDiscovery" TargetFolderName="ServiceDiscovery">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConsulHttpHandler.cs">ConsulHttpHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConsulOptions.cs">ConsulOptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConsulRegistrationService.cs">ConsulRegistrationService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DefaultServiceDiscoveryRegistration.cs">DefaultServiceDiscoveryRegistration.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IServiceDiscoveryRegistration.cs">IServiceDiscoveryRegistration.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceNotFoundException.cs">ServiceNotFoundException.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="HttpClientOptions.cs">HttpClientOptions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

@@ -1,0 +1,53 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.API</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.API</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.API.csproj" File="Micro.API.csproj" ReplaceParameters="true">
+      <Folder Name="AsyncApi" TargetFolderName="AsyncApi">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AsyncApiOptions.cs">AsyncApiOptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IAsyncApi.cs">IAsyncApi.cs</ProjectItem>
+      </Folder>
+      <Folder Name="CORS" TargetFolderName="CORS">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CorsOptions.cs">CorsOptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Exceptions" TargetFolderName="Exceptions">
+        <Folder Name="Mappers" TargetFolderName="Mappers">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ExceptionToResponseMapper.cs">ExceptionToResponseMapper.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Middlewares" TargetFolderName="Middlewares">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ErrorHandlerMiddleware.cs">ErrorHandlerMiddleware.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ExceptionResponse.cs">ExceptionResponse.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IExceptionToResponseMapper.cs">IExceptionToResponseMapper.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Networking" TargetFolderName="Networking">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="NetworkingOptions.cs">NetworkingOptions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Swagger" TargetFolderName="Swagger">
+        <Folder Name="Filters" TargetFolderName="Filters">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ExcludePropertiesFilter.cs">ExcludePropertiesFilter.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ExcludePropertiesFilter.cs">ExcludePropertiesFilter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerOptions.cs">SwaggerOptions.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

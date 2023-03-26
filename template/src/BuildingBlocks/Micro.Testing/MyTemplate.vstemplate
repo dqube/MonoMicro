@@ -1,0 +1,31 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Testing</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Testing</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Testing.csproj" File="Micro.Testing.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="EndpointContract.cs">EndpointContract.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MessageContract.cs">MessageContract.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="OptionsProvider.cs">OptionsProvider.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="PactBrokerPublisher.cs">PactBrokerPublisher.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="TestApp.cs">TestApp.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="TestAuthenticator.cs">TestAuthenticator.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="TestHttpClientFactory.cs">TestHttpClientFactory.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="TestMessageBroker.cs">TestMessageBroker.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="TestServer.cs">TestServer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="XUnitOutput.cs">XUnitOutput.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

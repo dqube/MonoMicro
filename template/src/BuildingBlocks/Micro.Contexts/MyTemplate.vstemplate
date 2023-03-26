@@ -1,0 +1,35 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Contexts</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Contexts</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Contexts.csproj" File="Micro.Contexts.csproj" ReplaceParameters="true">
+      <Folder Name="Accessors" TargetFolderName="Accessors">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ContextAccessor.cs">ContextAccessor.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IContextAccessor.cs">IContextAccessor.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessageContextAccessor.cs">IMessageContextAccessor.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessageContextAccessor.cs">MessageContextAccessor.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Providers" TargetFolderName="Providers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ContextProvider.cs">ContextProvider.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Context.cs">Context.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="IContext.cs">IContext.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="IContextProvider.cs">IContextProvider.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MessageContext.cs">MessageContext.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

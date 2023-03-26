@@ -1,0 +1,95 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Abstractions</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Abstractions</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Abstractions.csproj" File="Micro.Abstractions.csproj" ReplaceParameters="true">
+      <Folder Name="Abstractions" TargetFolderName="Abstractions">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICommand.cs">ICommand.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IEvent.cs">IEvent.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMessage.cs">IMessage.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IQuery.cs">IQuery.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Attributes" TargetFolderName="Attributes">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DecoratorAttribute.cs">DecoratorAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="HiddenAttribute.cs">HiddenAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessageAttribute.cs">MessageAttribute.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Dispatchers" TargetFolderName="Dispatchers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DomainEventDispatcher.cs">DomainEventDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InMemoryCommandDispatcher.cs">InMemoryCommandDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InMemoryDispatcher.cs">InMemoryDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InMemoryEventDispatcher.cs">InMemoryEventDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InMemoryQueryDispatcher.cs">InMemoryQueryDispatcher.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Exceptions" TargetFolderName="Exceptions">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomException.cs">CustomException.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Handlers" TargetFolderName="Handlers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICommandDispatcher.cs">ICommandDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICommandHandler.cs">ICommandHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IDispatcher.cs">IDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IEventDispatcher.cs">IEventDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IEventHandler.cs">IEventHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IQueryDispatcher.cs">IQueryDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IQueryHandler.cs">IQueryHandler.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Identity" TargetFolderName="Identity">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IdentityGenerator.cs">IdentityGenerator.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IIdGen.cs">IIdGen.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Kernel" TargetFolderName="Kernel">
+        <Folder Name="Types" TargetFolderName="Types">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Aggregate.cs">Aggregate.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AggregateId.cs">AggregateId.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AggregateRoot.cs">AggregateRoot.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Entity.cs">Entity.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="EntityId.cs">EntityId.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="IAggregate.cs">IAggregate.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="IEntity.cs">IEntity.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="TypeId.cs">TypeId.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IDomainEvent.cs">IDomainEvent.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IDomainEventDispatcher.cs">IDomainEventDispatcher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IDomainEventHandler.cs">IDomainEventHandler.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Modules" TargetFolderName="Modules">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IModule.cs">IModule.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IModuleClient.cs">IModuleClient.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IModuleSubscriber.cs">IModuleSubscriber.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Pagination" TargetFolderName="Pagination">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IPagedQuery.cs">IPagedQuery.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Paged.cs">Paged.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PagedBase.cs">PagedBase.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PagedQuery.cs">PagedQuery.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Serialization" TargetFolderName="Serialization">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IJsonSerializer.cs">IJsonSerializer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SystemTextJsonSerializer.cs">SystemTextJsonSerializer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Storage" TargetFolderName="Storage">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IRequestStorage.cs">IRequestStorage.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Time" TargetFolderName="Time">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IClock.cs">IClock.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UtcClock.cs">UtcClock.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="AppOptions.cs">AppOptions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

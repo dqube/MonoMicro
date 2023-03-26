@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.12" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="$ext_projectname$.Testing" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\$ext_projectname$.Abstractions\$ext_projectname$.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

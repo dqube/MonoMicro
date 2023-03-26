@@ -1,0 +1,31 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.DAL.Postgres</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.DAL.Postgres</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.DAL.Postgres.csproj" File="Micro.DAL.Postgres.csproj" ReplaceParameters="true">
+      <Folder Name="Internals" TargetFolderName="Internals">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DatabaseInitializer.cs">DatabaseInitializer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataInitializer.cs">DataInitializer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PostgresUnitOfWork.cs">PostgresUnitOfWork.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="IDataInitializer.cs">IDataInitializer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="IUnitOfWork.cs">IUnitOfWork.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Pagination.cs">Pagination.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="PostgresOptions.cs">PostgresOptions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

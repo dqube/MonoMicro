@@ -1,0 +1,61 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Security</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Security</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Security.csproj" File="Micro.Security.csproj" ReplaceParameters="true">
+      <Folder Name="Encryption" TargetFolderName="Encryption">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AesEncryptor.cs">AesEncryptor.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IEncryptor.cs">IEncryptor.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IPasswordManager.cs">IPasswordManager.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PasswordManager.cs">PasswordManager.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Hashing" TargetFolderName="Hashing">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IShaHasher.cs">IShaHasher.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ShaHasher.cs">ShaHasher.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Random" TargetFolderName="Random">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IRng.cs">IRng.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Rng.cs">Rng.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Signing" TargetFolderName="Signing">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ISigner.cs">ISigner.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Signer.cs">Signer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Vault" TargetFolderName="Vault">
+        <Folder Name="Internals" TargetFolderName="Internals">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CertificatesIssuer.cs">CertificatesIssuer.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CertificatesStore.cs">CertificatesStore.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="EmptyCertificatesIssuer.cs">EmptyCertificatesIssuer.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="KeyValueSecrets.cs">KeyValueSecrets.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LeaseService.cs">LeaseService.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="VaultHostedService.cs">VaultHostedService.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICertificatesIssuer.cs">ICertificatesIssuer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICertificatesStore.cs">ICertificatesStore.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IKeyValueSecrets.cs">IKeyValueSecrets.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ILeaseService.cs">ILeaseService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="JsonParser.cs">JsonParser.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LeaseData.cs">LeaseData.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="VaultAuthTypeNotSupportedException.cs">VaultAuthTypeNotSupportedException.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="VaultException.cs">VaultException.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="VaultOptions.cs">VaultOptions.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="SecurityOptions.cs">SecurityOptions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
