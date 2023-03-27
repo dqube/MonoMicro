@@ -13,5 +13,4 @@ var builder = WebApplication
 //    .AddOutboxInstantSenderDecorators()
 //    .AddMessagingErrorHandlingDecorators();
 var app = builder.Build();
-
-app.UseFramework().Run();
+app.UseModularFramework().Run();

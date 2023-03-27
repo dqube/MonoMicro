@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Micro.Abstractions.Handlers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Micro.Modules.Customers.Module.Controllers;
 [ApiController]
@@ -7,15 +8,15 @@ namespace Micro.Modules.Customers.Module.Controllers;
 public class CustomersController : Controller
 {
 
-    //private readonly ICommandDispatcher _commandDispatcher;
-    //private readonly IQueryDispatcher _queryDispatcher;
+    private readonly ICommandDispatcher _commanddispatcher;
+    private readonly IQueryDispatcher _querydispatcher;
 
 
-    //public CustomersController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
-    //{
-    //    _commandDispatcher = commandDispatcher;
-    //    _queryDispatcher = queryDispatcher;
-    //}
+    public CustomersController(ICommandDispatcher commanddispatcher, IQueryDispatcher querydispatcher)
+    {
+        _commanddispatcher = commanddispatcher;
+        _querydispatcher = querydispatcher;
+    }
     [HttpGet]
     public IActionResult ListDinners()
     {
