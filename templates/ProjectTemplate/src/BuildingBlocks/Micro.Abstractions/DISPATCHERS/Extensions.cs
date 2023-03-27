@@ -31,6 +31,11 @@ public static class Extensions
             .AsImplementedInterfaces()
             .WithScopedLifetime());
 
+        services.Scan(s => s.FromAssemblies(assemblies)
+            .AddClasses(c => c.AssignableTo(typeof(IDomainEventHandler<>))
+                .WithoutAttribute<DecoratorAttribute>())
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
         return services;
     }
 

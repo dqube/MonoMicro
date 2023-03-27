@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\$ext_projectname$.API\$ext_projectname$.API.csproj" />
       <ProjectReference Include="..\$ext_projectname$.Auth\$ext_projectname$.Auth.csproj" />
+      <ProjectReference Include="..\$ext_projectname$.Contracts\$ext_projectname$.Contracts.csproj" />
       <ProjectReference Include="..\$ext_projectname$.DAL.Mongo\$ext_projectname$.DAL.Mongo.csproj" />
       <ProjectReference Include="..\$ext_projectname$.DAL.Postgres\$ext_projectname$.DAL.Postgres.csproj" />
       <ProjectReference Include="..\$ext_projectname$.DAL.SqlServer\$ext_projectname$.DAL.SqlServer.csproj" />

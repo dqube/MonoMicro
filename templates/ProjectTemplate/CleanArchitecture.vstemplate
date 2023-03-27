@@ -29,6 +29,9 @@
           <ProjectTemplateLink ProjectName="$projectname$.Contexts" CopyParameters="true">
             src\BuildingBlocks\Micro.Contexts\MyTemplate.vstemplate
           </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Contracts" CopyParameters="true">
+            src\BuildingBlocks\Micro.Contracts\MyTemplate.vstemplate
+          </ProjectTemplateLink>
           <ProjectTemplateLink ProjectName="$projectname$.DAL.Mongo" CopyParameters="true">
             src\BuildingBlocks\Micro.DAL.Mongo\MyTemplate.vstemplate
           </ProjectTemplateLink>

@@ -1,4 +1,5 @@
 using $safeprojectname$.Identity;
+using $safeprojectname$.Initializer;
 using $safeprojectname$.Serialization;
 using $safeprojectname$.Time;
 using Microsoft.AspNetCore.Http.Json;
@@ -11,7 +12,8 @@ namespace $safeprojectname$;
 
 public static class Extensions
 {
-
+    public static IServiceCollection AddInitializer<T>(this IServiceCollection services) where T : class, IInitializer
+        => services.AddTransient<IInitializer, T>();
     public static T BindOptions<T>(this IConfiguration configuration, string sectionName) where T : new()
         => BindOptions<T>(configuration.GetSection(sectionName));
 
@@ -49,7 +51,7 @@ public static class Extensions
             return string.Empty;
         }
 
-        return type.Namespace.StartsWith("Confab.Modules.")
+        return type.Namespace.StartsWith("Micro.Modules.")
             ? type.Namespace.Split(".")[2].ToLowerInvariant()
             : string.Empty;
     }

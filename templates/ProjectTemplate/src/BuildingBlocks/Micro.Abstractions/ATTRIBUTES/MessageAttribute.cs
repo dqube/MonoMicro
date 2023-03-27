@@ -9,9 +9,12 @@ public class MessageAttribute : Attribute
     public string QueueType { get; }
     public string ErrorQueue { get; }
     public string SubscriptionId { get; }
+    public string Module { get; }
+    public bool Enabled { get; }
+
 
     public MessageAttribute(string? exchange = null, string? topic = null, string? queue = null,
-        string? queueType = null, string? errorQueue = null, string? subscriptionId = null)
+        string? queueType = null, string? errorQueue = null, string? subscriptionId = null, string? module = null, bool enabled = true)
     {
         Exchange = exchange ?? string.Empty;
         Topic = topic ?? string.Empty;
@@ -19,5 +22,7 @@ public class MessageAttribute : Attribute
         QueueType = queueType ?? string.Empty;
         ErrorQueue = errorQueue ?? string.Empty;
         SubscriptionId = subscriptionId ?? string.Empty;
+        Module = module ?? string.Empty;    
+        Enabled = enabled;  
     }
 }

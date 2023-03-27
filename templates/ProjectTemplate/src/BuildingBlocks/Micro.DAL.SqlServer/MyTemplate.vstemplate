@@ -16,6 +16,7 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Micro.DAL.SqlServer.csproj" File="Micro.DAL.SqlServer.csproj" ReplaceParameters="true">
+      <Folder Name=".vs" TargetFolderName=".vs" />
       <Folder Name="Internals" TargetFolderName="Internals">
         <ProjectItem ReplaceParameters="true" TargetFileName="DatabaseInitializer.cs">DatabaseInitializer.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="DataInitializer.cs">DataInitializer.cs</ProjectItem>
@@ -29,6 +30,7 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="IUnitOfWork.cs">IUnitOfWork.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Pagination.cs">Pagination.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="SqlServerOptions.cs">SqlServerOptions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="SqlServerUnitOfWork.cs">SqlServerUnitOfWork.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="UnitOfWorkRegistry.cs">UnitOfWorkRegistry.cs</ProjectItem>
     </Project>
   </TemplateContent>

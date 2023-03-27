@@ -1,6 +1,6 @@
 ﻿using $ext_projectname$.Abstractions;
 using $ext_projectname$.Abstractions.Dispatchers;
-using $ext_projectname$.Abstractions.Modules;
+using $ext_projectname$.API;
 using $ext_projectname$.API.AsyncApi;
 using $ext_projectname$.API.CORS;
 using $ext_projectname$.API.Exceptions;
@@ -8,35 +8,42 @@ using $ext_projectname$.API.Networking;
 using $ext_projectname$.API.Swagger;
 using $ext_projectname$.Auth;
 using $ext_projectname$.Contexts;
+using $ext_projectname$.Contracts;
 using $ext_projectname$.HTTP;
 using $ext_projectname$.HTTP.LoadBalancing;
 using $ext_projectname$.HTTP.ServiceDiscovery;
 using $ext_projectname$.Messaging;
 using $ext_projectname$.Messaging.RabbitMQ;
 using $ext_projectname$.Messaging.RabbitMQ.Streams;
+using $ext_projectname$.Modules;
 using $ext_projectname$.Observability;
 using $ext_projectname$.Observability.Logging;
 using $ext_projectname$.Security;
 using $ext_projectname$.Security.Vault;
 using $ext_projectname$.Storage;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using System.Reflection;
 
 namespace $safeprojectname$;
 
 public static class Extensions
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services,
-       IList<Assembly> assemblies, IList<IModule> modules)
+    
+    public static WebApplicationBuilder AddModularFramework(this WebApplicationBuilder builder)
     {
+        builder.ConfigureModules();
+        var configuration = builder.Configuration;
+        var section = configuration.GetSection("app");
+        var options = section.BindOptions<AppOptions>();
+        var _assemblies = ModuleLoader.LoadAssemblies(configuration, options.ModulePart);
+        var _modules = ModuleLoader.LoadModules(_assemblies);
         var disabledModules = new List<string>();
-        using (var serviceProvider = services.BuildServiceProvider())
+        using (var serviceProvider = builder.Services.BuildServiceProvider())
         {
-            var configuration = serviceProvider.GetRequiredService<IConfiguration>();
             foreach (var (key, value) in configuration.AsEnumerable())
             {
                 if (!key.Contains(":module:enabled"))
@@ -50,31 +57,17 @@ public static class Extensions
                 }
             }
         }
-
-
-
-        //services.AddMemoryCache();
-        //services.AddSingleton<IRequestStorage, RequestStorage>();
-        //services.AddAuth(modules);
-        //services.AddModuleInfo(modules);
-        //services.AddModuleRequests(assemblies);
-        //services.AddSingleton<IContextFactory, ContextFactory>();
-        //services.AddTransient<IContext>(sp => sp.GetRequiredService<IContextFactory>().Create());
-        //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-        //services.AddEvents(assemblies);
-        //services.AddDomainEvents(assemblies);
-        //services.AddCommands(assemblies);
-        //services.AddQueries(assemblies);
-        //services.AddMessaging();
-        //services.AddPostgres();
-        //services.AddTransactionalDecorators();
-        //services.AddSingleton<IClock, UtcClock>();
-        //services.AddHostedService<AppInitializer>(); // Will ApplyMigrations for every known DbContext in solution automatically when application starts
-
-        services.AddControllers()
+        foreach (var module in _modules)
+        {
+            module.Register(builder.Services);
+        }
+        builder.AddFramework();
+        builder.Services
+        .AddModuleInfo(_modules)
+        .AddModuleRequests(_assemblies);
+        builder.Services.AddControllers()
             .ConfigureApplicationPartManager(manager =>
             {
-                // Thanks to this part there will not be any run-time classes from the disabled module
                 var removedParts = new List<ApplicationPart>();
                 foreach (var disabledModule in disabledModules)
                 {
@@ -88,15 +81,19 @@ public static class Extensions
                     manager.ApplicationParts.Remove(part);
                 }
 
+                manager.FeatureProviders.Add(new InternalControllerFeatureProvider());
             });
 
-        return services;
+        _assemblies.Clear();
+        _modules.Clear();
+        return builder;
     }
 
-    public static WebApplicationBuilder AddMicroFramework(this WebApplicationBuilder builder)
+    public static WebApplicationBuilder AddFramework(this WebApplicationBuilder builder)
     {
-        builder.AddVault();
         
+        builder.AddVault();
+
         var appOptions = builder.Configuration.GetSection("app").BindOptions<AppOptions>();
         var appInfo = new AppInfo(appOptions.Name, appOptions.Version);
         builder.Services.AddSingleton(appInfo);
@@ -126,7 +123,8 @@ public static class Extensions
             .AddFabio(builder.Configuration)
             .AddSecurity(builder.Configuration)
             .AddLogger(builder.Configuration)
-            .AddObservability(builder.Configuration);
+            .AddObservability(builder.Configuration)
+            .AddContracts();
 
         builder.Services
             .AddHttpClient(builder.Configuration)
@@ -140,8 +138,31 @@ public static class Extensions
 
         return builder;
     }
+    public static WebApplication UseModularFramework(this WebApplication app)
+    {
+        app.UseFramework();
+        var configuration = app.Configuration;
+        var section = configuration.GetSection("app");
+        var options = section.BindOptions<AppOptions>();
+        var _assemblies = ModuleLoader.LoadAssemblies(configuration, options.ModulePart);
+        var _modules = ModuleLoader.LoadModules(_assemblies);
+        foreach (var module in _modules)
+        {
+            module.Use(app);
+        }
+        app.ValidateContracts(_assemblies);
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+            endpoints.MapGet("/", context => context.Response.WriteAsync(options.Name));
+            endpoints.MapModuleInfo();
+        });
 
-    public static WebApplication UseMicroFramework(this WebApplication app)
+        _assemblies.Clear();
+        _modules.Clear();
+        return app;
+    }
+    public static WebApplication UseFramework(this WebApplication app)
     {
         app
             .UseHeadersForwarding()
@@ -168,5 +189,5 @@ public static class Extensions
 
         Console.WriteLine(Figgle.FiggleFonts.Slant.Render($"{app.Name} {app.Version}"));
     }
-   
+
 }

@@ -48,6 +48,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerOptions.cs">SwaggerOptions.cs</ProjectItem>
       </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="InternalControllerFeatureProvider.cs">InternalControllerFeatureProvider.cs</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>

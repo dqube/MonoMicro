@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\$ext_projectname$.Abstractions\$ext_projectname$.Abstractions.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.Modules\$ext_projectname$.Modules.csproj" />
+  </ItemGroup>
+
+</Project>

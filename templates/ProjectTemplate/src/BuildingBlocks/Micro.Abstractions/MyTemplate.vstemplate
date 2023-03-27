@@ -27,6 +27,10 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="HiddenAttribute.cs">HiddenAttribute.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MessageAttribute.cs">MessageAttribute.cs</ProjectItem>
       </Folder>
+      <Folder Name="Contracts" TargetFolderName="Contracts">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Contract.cs">Contract.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IContract.cs">IContract.cs</ProjectItem>
+      </Folder>
       <Folder Name="Dispatchers" TargetFolderName="Dispatchers">
         <ProjectItem ReplaceParameters="true" TargetFileName="DomainEventDispatcher.cs">DomainEventDispatcher.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
@@ -51,16 +55,17 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="IdentityGenerator.cs">IdentityGenerator.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IIdGen.cs">IIdGen.cs</ProjectItem>
       </Folder>
+      <Folder Name="Initializer" TargetFolderName="Initializer">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IInitializer.cs">IInitializer.cs</ProjectItem>
+      </Folder>
       <Folder Name="Kernel" TargetFolderName="Kernel">
         <Folder Name="Types" TargetFolderName="Types">
           <ProjectItem ReplaceParameters="true" TargetFileName="Aggregate.cs">Aggregate.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="AggregateId.cs">AggregateId.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="AggregateRoot.cs">AggregateRoot.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="Entity.cs">Entity.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="EntityId.cs">EntityId.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="IAggregate.cs">IAggregate.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="IEntity.cs">IEntity.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="TypeId.cs">TypeId.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ValueObject.cs">ValueObject.cs</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="IDomainEvent.cs">IDomainEvent.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IDomainEventDispatcher.cs">IDomainEventDispatcher.cs</ProjectItem>
