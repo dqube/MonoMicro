@@ -141,7 +141,8 @@ public static class Extensions
     {
         app.UseFramework();
         var configuration = app.Configuration;
-        var modulePart = configuration.BindOptions<AppOptions>("app").ModulePart;
+        var options=configuration.BindOptions<AppOptions>("app");
+        var modulePart = options.ModulePart;
         var _assemblies = ModuleLoader.LoadAssemblies(configuration, modulePart);
         var _modules = ModuleLoader.LoadModules(_assemblies);
         foreach (var module in _modules)
