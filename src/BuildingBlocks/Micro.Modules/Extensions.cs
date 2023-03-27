@@ -33,25 +33,28 @@ public static class Extensions
             return context.Response.WriteAsJsonAsync(moduleInfoProvider.Modules);
         });
     }
-        
-    public static IHostBuilder ConfigureModules(this IHostBuilder builder)
-        => builder.ConfigureAppConfiguration((ctx, cfg) =>
-        {
-            foreach (var settings in GetSettings("*"))
-            {
-                cfg.AddJsonFile(settings);
-            }
 
-            foreach (var settings in GetSettings($"*.{ctx.HostingEnvironment.EnvironmentName}"))
+    public static WebApplicationBuilder ConfigureModules(this WebApplicationBuilder builder)
+    {
+         builder.Host.ConfigureAppConfiguration((ctx, cfg) =>
             {
-                cfg.AddJsonFile(settings);
-            }
+                foreach (var settings in GetSettings("*"))
+                {
+                    cfg.AddJsonFile(settings);
+                }
 
-            IEnumerable<string> GetSettings(string pattern)
-                => Directory.EnumerateFiles(ctx.HostingEnvironment.ContentRootPath,
-                    $"module.{pattern}.json", SearchOption.AllDirectories);
-        });
-        
+                foreach (var settings in GetSettings($"*.{ctx.HostingEnvironment.EnvironmentName}"))
+                {
+                    cfg.AddJsonFile(settings);
+                }
+
+                IEnumerable<string> GetSettings(string pattern)
+                    => Directory.EnumerateFiles(ctx.HostingEnvironment.ContentRootPath,
+                        $"module.{pattern}.json", SearchOption.AllDirectories);
+            });
+        return builder;
+    }
+
     public static IServiceCollection AddModuleRequests(this IServiceCollection services, IList<Assembly> assemblies)
     {
         services.AddModuleRegistry(assemblies);
@@ -109,5 +112,19 @@ public static class Extensions
 
             return registry;
         });
+    }
+    public static string GetModuleName(this object value)
+        => value?.GetType().GetModuleName() ?? string.Empty;
+
+    public static string GetModuleName(this Type type, string namespacePart = "Modules", int splitIndex = 2)
+    {
+        if (type?.Namespace is null)
+        {
+            return string.Empty;
+        }
+
+        return type.Namespace.Contains(namespacePart)
+            ? type.Namespace.Split(".")[splitIndex].ToLowerInvariant()
+            : string.Empty;
     }
 }

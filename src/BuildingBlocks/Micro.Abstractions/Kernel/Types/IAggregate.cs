@@ -6,12 +6,11 @@ namespace Micro.Abstractions.Kernel.Types;
 public interface IAggregate : IEntity
 {
     IReadOnlyList<IDomainEvent> DomainEvents { get; }
-    //IEvent[] ClearDomainEvents();
     void ClearDomainEvents();
     long Version { get; set; }
 }
 
-public interface IAggregate<out T> : IAggregate
+public interface IAggregate<out TId> : IAggregate
 {
-    T Id { get; }
+    TId Id { get; }
 }

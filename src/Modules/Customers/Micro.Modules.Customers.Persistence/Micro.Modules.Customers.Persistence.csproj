@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Micro.DAL.SqlServer\Micro.DAL.SqlServer.csproj" />
+    <ProjectReference Include="..\Micro.Modules.Customers.Domain\Micro.Modules.Customers.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,35 +1,38 @@
-﻿using Micro.Abstractions;
-using Micro.Abstractions.Kernel;
-
-namespace Micro.Abstractions.Kernel.Types;
-
-public abstract class Aggregate : Aggregate<long>
+﻿namespace Micro.Abstractions.Kernel.Types;
+public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
+    where TId : notnull
 {
-}
+    public int DomainEventVersion { get; protected set; }
+    public long Version { get; set; } = -1;
 
-public abstract class Aggregate<TId> : Entity, IAggregate<TId>
-{
     private readonly List<IDomainEvent> _domainEvents = new();
     public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-    public void AddDomainEvent(IDomainEvent domainEvent)
+    private bool _versionIncremented;
+    protected Aggregate(TId id) : base(id)
     {
-        _domainEvents.Add(domainEvent);
+    }
+    protected void AddDomainEvent(IDomainEvent @event)
+    {
+        if (!_domainEvents.Any() && !_versionIncremented) // Only one version up when update/create aggregate
+        {
+            DomainEventVersion++;
+            _versionIncremented = true;
+        }
+
+        _domainEvents.Add(@event);
     }
 
-    //public IEvent[] ClearDomainEvents()
-    //{
-    //    IEvent[] dequeuedEvents = _domainEvents.ToArray();
+    public void ClearDomainEvents() => _domainEvents.Clear();
 
-    //    _domainEvents.Clear();
-
-    //    return dequeuedEvents;
-    //}
-    public void ClearDomainEvents()
+    protected void IncrementVersion()
     {
-        _domainEvents.Clear();
-    }
-    public long Version { get; set; } = -1;
+        if (_versionIncremented)
+        {
+            return;
+        }
 
-    public TId Id { get; protected set; }
+        DomainEventVersion++;
+        _versionIncremented = true;
+    }
 }

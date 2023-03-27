@@ -8,6 +8,7 @@ public static class ModuleLoader
 {
     public static IList<Assembly> LoadAssemblies(IConfiguration configuration, string modulePart)
     {
+
         var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
         var locations = assemblies.Where(x => !x.IsDynamic).Select(x => x.Location).ToArray();
         var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
