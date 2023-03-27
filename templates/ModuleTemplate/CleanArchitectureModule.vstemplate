@@ -1,0 +1,42 @@
+﻿<VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Clean Architecture Module Template</Name>
+    <Description>A project template for building ASP.NET Core WebAPI with cross cuttings features for modular monolith and microservice architecture</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>CleanArchitecture.Modules</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+  </TemplateData>  
+  <TemplateContent>
+    <ProjectCollection>
+      <SolutionFolder Name="src">
+        <SolutionFolder Name="Modules">          
+          <ProjectTemplateLink ProjectName="$projectname$.Application" CopyParameters="true">
+            src\Modules\Micro.Modules.Customers.Application\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Domain" CopyParameters="true">
+            src\Modules\Micro.Modules.Customers.Domain\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Infrastructure" CopyParameters="true">
+            src\Modules\Micro.Modules.Customers.Infrastructure\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Persistence" CopyParameters="true">
+            src\Modules\Micro.Modules.Customers.Infrastructure\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$projectname$.Module" CopyParameters="true">
+            src\Modules\Micro.Modules.Customers.Module\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+         
+        </SolutionFolder>
+       
+      </SolutionFolder>
+
+    </ProjectCollection>
+  </TemplateContent>
+</VSTemplate>

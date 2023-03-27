@@ -1,0 +1,30 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Micro.Modules.Customers.Persistence</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Micro.Modules.Customers.Persistence</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Micro.Modules.Customers.Persistence.csproj" File="Micro.Modules.Customers.Persistence.csproj" ReplaceParameters="true">
+      <Folder Name="Configurations" TargetFolderName="Configurations">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerConfiguration.cs">CustomerConfiguration.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Constants" TargetFolderName="Constants">
+        <ProjectItem ReplaceParameters="true" TargetFileName="TableNames.cs">TableNames.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="CustomersDbContext.cs">CustomersDbContext.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="CustomersUnitOfWork.cs">CustomersUnitOfWork.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
