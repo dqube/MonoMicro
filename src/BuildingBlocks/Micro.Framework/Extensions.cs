@@ -37,9 +37,8 @@ public static class Extensions
     {
         builder.ConfigureModules();
         var configuration = builder.Configuration;
-        var section = configuration.GetSection("app");
-        var options = section.BindOptions<AppOptions>();
-        var _assemblies = ModuleLoader.LoadAssemblies(configuration, options.ModulePart);
+        var modulePart = configuration.BindOptions<AppOptions>("app").ModulePart;
+        var _assemblies = ModuleLoader.LoadAssemblies(configuration, modulePart);
         var _modules = ModuleLoader.LoadModules(_assemblies);
         var disabledModules = new List<string>();
         using (var serviceProvider = builder.Services.BuildServiceProvider())
@@ -142,9 +141,8 @@ public static class Extensions
     {
         app.UseFramework();
         var configuration = app.Configuration;
-        var section = configuration.GetSection("app");
-        var options = section.BindOptions<AppOptions>();
-        var _assemblies = ModuleLoader.LoadAssemblies(configuration, options.ModulePart);
+        var modulePart = configuration.BindOptions<AppOptions>("app").ModulePart;
+        var _assemblies = ModuleLoader.LoadAssemblies(configuration, modulePart);
         var _modules = ModuleLoader.LoadModules(_assemblies);
         foreach (var module in _modules)
         {
