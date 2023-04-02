@@ -9,6 +9,7 @@ using Micro.API.Swagger;
 using Micro.Auth;
 using Micro.Contexts;
 using Micro.Contracts;
+using Micro.DAL.SqlServer;
 using Micro.HTTP;
 using Micro.HTTP.LoadBalancing;
 using Micro.HTTP.ServiceDiscovery;
@@ -56,14 +57,53 @@ public static class Extensions
                 }
             }
         }
+        builder.Services
+            .AddSqlServerModule();
+
         foreach (var module in _modules)
         {
             module.Register(builder.Services);
         }
-        builder.AddFramework();
-        builder.Services
+        //builder.AddFramework();
+        builder.AddVault();
+
+        var appOptions = builder.Configuration.GetSection("app").BindOptions<AppOptions>();
+        var appInfo = new AppInfo(appOptions.Name, appOptions.Version);
+        builder.Services.AddSingleton(appInfo);
+
+        RenderLogo(appOptions);
+
+        builder
+            .AddLogging()
+            .Services
+            .AddErrorHandling()
         .AddModuleInfo(_modules)
-        .AddModuleRequests(_assemblies);
+        .AddModuleRequests(_assemblies)
+         .AddModuleHandlers(_assemblies)
+            .AddDispatchers()
+            .AddContexts()
+            .AddMemoryCache()
+            .AddHttpContextAccessor()
+            .AddMicro(builder.Configuration)
+            //.AddAuth(builder.Configuration)
+            .AddCorsPolicy(builder.Configuration)
+            .AddSwaggerDocs(builder.Configuration)
+            .AddStorage(builder.Configuration)
+            .AddAsyncApiDocs(builder.Configuration)
+            .AddHeadersForwarding(builder.Configuration)
+            .AddMessaging(builder.Configuration)
+            .AddRabbitMQ(builder.Configuration)
+            .AddRabbitMQStreams(builder.Configuration)
+            .AddConsul(builder.Configuration)
+            .AddFabio(builder.Configuration)
+            .AddSecurity(builder.Configuration)
+            .AddLogger(builder.Configuration)
+            .AddObservability(builder.Configuration)
+            .AddContracts();
+
+        builder.Services
+           .AddHttpClient(builder.Configuration)
+           .AddVaultCertificatesHandler(builder.Configuration);
         builder.Services.AddControllers()
             .ConfigureApplicationPartManager(manager =>
             {

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Api"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Tests.Contract"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Tests.EndToEnd"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Tests.Integration"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Tests.Unit"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2"></InternalsVisibleTo>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EF\Mappings\" />
+    <Folder Include="EF\Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <!--<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>-->
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Micro.DAL.SqlServer\Micro.DAL.SqlServer.csproj" />
+    <ProjectReference Include="..\Micro.Modules.Wallets.Application\Micro.Modules.Wallets.Application.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,115 @@
+<#@ template debug="true" hostSpecific="true" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Design" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Relational" #>
+<#@ assembly name="Microsoft.Extensions.DependencyInjection.Abstractions" #>
+<#@ assembly name="Humanizer" #>
+<#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
+<#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
+<#@ parameter name="NamespaceHint" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
+<#@ import namespace="Humanizer" #>
+
+<#
+   // Template version: 703 - please do NOT remove this line
+   ///if(!System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Launch();
+    var services = (IServiceProvider)Host;
+    var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
+    var code = services.GetRequiredService<ICSharpHelper>();
+    var entityNameLower=EntityType.Name.ToString().ToLower();
+    var RootNamespace=Options.ModelNamespace.ToString().Split(".");
+    var usings = new List<string>
+    {
+        "System",
+        "System.Collections.Generic",
+        RootNamespace[0] + ".Domain.Repository",
+        RootNamespace[0] + ".Models"
+    };
+
+   
+
+    if (!string.IsNullOrEmpty(NamespaceHint))
+    {
+#>
+namespace <#= NamespaceHint #>;
+
+<#
+    }   
+    var firstProperty=EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).FirstOrDefault();
+#>
+/// GetQueryById
+public record <#= EntityType.Name #>Response();
+
+internal sealed record Get<#= EntityType.Name #>ByIdQuery(<#= code.Reference(firstProperty.ClrType) #> <#= firstProperty.Name #>) : IQuery<<#= EntityType.Name #>Response>;
+internal class Get<#= EntityType.Name #>ByIdQueryValidator : AbstractValidator<Get<#= EntityType.Name #>ByIdQuery>
+{
+    public Get<#= EntityType.Name #>ByIdQueryValidator()
+    {
+        //RuleFor(x => x.FirstName).NotEmpty().MaximumLength(FirstName.MaxLength);
+
+        //RuleFor(x => x.LastName).NotEmpty().MaximumLength(LastName.MaxLength);
+    }
+}
+internal sealed class Get<#= EntityType.Name #>ByIdQueryHandler : IQueryHandler<Get<#= EntityType.Name #>ByIdQuery, <#= EntityType.Name #>Response>
+{
+    private readonly I<#= EntityType.Name #>Repository _<#= entityNameLower  #>Repository;
+
+    public Get<#= EntityType.Name #>ByIdQueryHandler(
+        I<#= EntityType.Name  #>Repository <#= entityNameLower  #>Repository)
+    {
+        _<#= entityNameLower  #>Repository = <#= entityNameLower  #>Repository;
+    }
+public async Task<<#= EntityType.Name #>> Handle(Get<#= EntityType.Name #>ByIdQuery request, CancellationToken cancellationToken)
+{
+<#= EntityType.Name #>? <#= entityNameLower  #> = await _<#= entityNameLower  #>Repository.FindByIdAsync(request.<#= firstProperty.Name #>,cancellationToken);
+return new <#= EntityType.Name #>Response();
+}
+}
+/// GetQueryList
+internal sealed record Get<#= EntityType.Name #>ListQuery(<#= code.Reference(firstProperty.ClrType) #> <#= firstProperty.Name #>) : IQuery<IEnumerable<<#= EntityType.Name #>Response>>;
+internal class Get<#= EntityType.Name #>ByIdQueryValidator : AbstractValidator<Get<#= EntityType.Name #>ByIdQuery>
+{
+    public Get<#= EntityType.Name #>ByIdQueryValidator()
+    {
+        //RuleFor(x => x.FirstName).NotEmpty().MaximumLength(FirstName.MaxLength);
+
+        //RuleFor(x => x.LastName).NotEmpty().MaximumLength(LastName.MaxLength);
+    }
+}
+internal sealed class Get<#= EntityType.Name #>ListQueryHandler : IQueryHandler<Get<#= EntityType.Name #>ByIdQuery, IEnumerable<<#= EntityType.Name #>Response>>
+{
+    private readonly I<#= EntityType.Name #>Repository _<#= entityNameLower  #>Repository;
+
+    public Get<#= EntityType.Name #>ListQueryHandler(
+        I<#= EntityType.Name  #>Repository <#= entityNameLower  #>Repository)
+    {
+        _<#= entityNameLower  #>Repository = <#= entityNameLower  #>Repository;
+    }
+public async Task<IEnumerable<<#= EntityType.Name #>Response>> Handle(Get<#= EntityType.Name #>ListQuery request, CancellationToken cancellationToken)
+{
+IEnumerable<<#= EntityType.Name #>>? <#= entityNameLower  #>s = await _<#= entityNameLower  #>Repository.AllAsync(cancellationToken);
+
+return new List<<#= EntityType.Name #>Response>();
+}
+}
+<#
+    var previousOutput = GenerationEnvironment;
+    GenerationEnvironment = new StringBuilder();
+
+    foreach (var ns in usings.Distinct().OrderBy(x => x, new NamespaceComparer()))
+    {
+#>
+using <#= ns #>;
+<#
+    }
+
+    WriteLine("");
+
+    GenerationEnvironment.Append(previousOutput);
+#>

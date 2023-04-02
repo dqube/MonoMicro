@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Micro.Messaging.Azure.ServiceBus": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:57492;http://localhost:57494"
+    }
+  }
+}

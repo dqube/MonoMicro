@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Micro.Modules.Wallets.Domain\Micro.Modules.Wallets.Domain.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Micro.Messaging\Micro.Messaging.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Api" ></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Infrastructure" ></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Tests.Contract" ></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Tests.EndToEnd" ></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Tests.Integration" ></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Wallets.Tests.Unit" ></InternalsVisibleTo>
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" ></InternalsVisibleTo>
+  </ItemGroup>
+</Project>

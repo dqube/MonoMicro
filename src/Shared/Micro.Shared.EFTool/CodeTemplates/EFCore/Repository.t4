@@ -1,0 +1,99 @@
+<#@ template debug="true" hostSpecific="true" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Design" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Relational" #>
+<#@ assembly name="Microsoft.Extensions.DependencyInjection.Abstractions" #>
+<#@ assembly name="Humanizer" #>
+<#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
+<#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
+<#@ parameter name="NamespaceHint" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
+<#@ import namespace="Humanizer" #>
+
+<#
+   // Template version: 703 - please do NOT remove this line
+  /// if(!System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Launch();
+    var services = (IServiceProvider)Host;
+    var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
+    var code = services.GetRequiredService<ICSharpHelper>();
+    var entityNameLower=EntityType.Name.ToString().ToLower();
+    var contextName=Options.ContextNamespace.ToString();
+    var RootNamespace=Options.ModelNamespace.ToString().Remove((Options.ModelNamespace.Length)-10,10);
+    var entityNamespace=RootNamespace +"Persistence.Repository";
+    var usings = new List<string>
+    {
+        "System",
+        "System.Collections.Generic",
+        "Microsoft.EntityFrameworkCore",
+        contextName,
+        RootNamespace + "Domain.Repository",
+        RootNamespace + "Models"
+        
+    };
+
+   
+
+    if (!string.IsNullOrEmpty(NamespaceHint))
+    {
+#>
+namespace <#= entityNamespace #>;
+
+<#
+    }   
+    var firstProperty=EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).FirstOrDefault();
+    var firstPropLower = firstProperty.Name.ToString().ToLower();
+#>
+
+public sealed class <#= EntityType.Name #>Repository : I<#= EntityType.Name #>Repository
+{
+private readonly <#= Options.ContextName #> _dbContext;
+public <#= EntityType.Name #>Repository(<#= Options.ContextName #> dbContext) =>
+        _dbContext = dbContext;
+
+public async Task<IEnumerable<<#= EntityType.Name #>>> AllAsync(CancellationToken cancellationToken = default) =>
+    await _dbContext
+            .Set<<#= EntityType.Name  #>>()
+            .ToListAsync(cancellationToken);
+
+public async Task<<#= EntityType.Name  #>?> FindByIdAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default) =>
+    await _dbContext
+            .Set<<#= EntityType.Name  #>>()
+            .FirstOrDefaultAsync(ent => ent.<#= firstProperty.Name  #> == id, cancellationToken);
+
+public async Task<<#= EntityType.Name  #>?> AddAsync (<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default) 
+{
+    await _dbContext
+            .Set<<#= EntityType.Name  #>>()
+            .AddAsync(<#= entityNameLower #>, cancellationToken);
+            return <#= entityNameLower #>;
+}
+public async Task<<#= EntityType.Name  #>?> UpdateAsync(<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default) 
+{
+    throw new NotImplementedException();
+}      
+ public async Task<<#= code.Reference(firstProperty.ClrType) #>> DeleteAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default)
+ {
+     throw new NotImplementedException();
+ }
+}
+<#
+    var previousOutput = GenerationEnvironment;
+    GenerationEnvironment = new StringBuilder();
+
+    foreach (var ns in usings.Distinct().OrderBy(x => x, new NamespaceComparer()))
+    {
+#>
+using <#= ns #>;
+<#
+    }
+
+    WriteLine("");
+
+    GenerationEnvironment.Append(previousOutput);
+#>

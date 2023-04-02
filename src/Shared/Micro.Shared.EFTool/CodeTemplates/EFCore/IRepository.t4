@@ -1,0 +1,73 @@
+<#@ template debug="true" hostSpecific="true" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Design" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Relational" #>
+<#@ assembly name="Microsoft.Extensions.DependencyInjection.Abstractions" #>
+<#@ assembly name="Humanizer" #>
+<#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
+<#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
+<#@ parameter name="NamespaceHint" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
+<#@ import namespace="Humanizer" #>
+
+<#
+   // Template version: 703 - please do NOT remove this line
+   //if(!System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Launch();
+    var services = (IServiceProvider)Host;
+    var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
+    var code = services.GetRequiredService<ICSharpHelper>();
+    var entityNameLower=EntityType.Name.ToString().ToLower();
+    var RootNamespace=Options.ModelNamespace.ToString().Remove((Options.ModelNamespace.Length)-11,11);
+    var entityNamespace=RootNamespace +"Domain.Repository";
+    var usings = new List<string>
+    {
+        "System",
+        "System.Collections.Generic",
+        RootNamespace + "Models"
+    };
+    if (NamespaceHint != Options.ModelNamespace
+        && !string.IsNullOrEmpty(Options.ModelNamespace))
+    {
+        usings.Add(Options.ModelNamespace);
+    }
+   
+
+    if (!string.IsNullOrEmpty(NamespaceHint))
+    {
+#>
+namespace <#= entityNamespace #>;
+
+<#
+    }   
+    var firstProperty=EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).FirstOrDefault();
+#>
+
+public interface I<#= EntityType.Name #>Repository
+{
+  Task<IEnumerable<<#= EntityType.Name #>>> AllAsync(CancellationToken cancellationToken = default);
+  Task<<#= EntityType.Name #>?> AddAsync (<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default);
+  Task <<#= EntityType.Name  #>?> FindByIdAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default);
+  Task<<#= EntityType.Name #>?> UpdateAsync(<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default);
+  Task<<#= code.Reference(firstProperty.ClrType) #>> DeleteAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default);
+}
+<#
+    var previousOutput = GenerationEnvironment;
+    GenerationEnvironment = new StringBuilder();
+
+    foreach (var ns in usings.Distinct().OrderBy(x => x, new NamespaceComparer()))
+    {
+#>
+using <#= ns #>;
+<#
+    }
+
+    WriteLine("");
+
+    GenerationEnvironment.Append(previousOutput);
+#>
