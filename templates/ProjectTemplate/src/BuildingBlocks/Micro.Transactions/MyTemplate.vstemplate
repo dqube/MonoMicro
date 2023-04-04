@@ -16,6 +16,9 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Micro.Transactions.csproj" File="Micro.Transactions.csproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
+      </Folder>
       <Folder Name="Decorators" TargetFolderName="Decorators">
         <ProjectItem ReplaceParameters="true" TargetFileName="OutboxInstantSenderCommandHandlerDecorator.cs">OutboxInstantSenderCommandHandlerDecorator.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="OutboxInstantSenderEventHandlerDecorator.cs">OutboxInstantSenderEventHandlerDecorator.cs</ProjectItem>

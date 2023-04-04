@@ -2,6 +2,7 @@
 public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
     where TId : notnull
 {
+
     public int DomainEventVersion { get; protected set; }
     public long Version { get; set; } = -1;
 

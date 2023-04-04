@@ -16,6 +16,9 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Micro.Framework.csproj" File="Micro.Framework.csproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
+      </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="AppInfo.cs">AppInfo.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
     </Project>

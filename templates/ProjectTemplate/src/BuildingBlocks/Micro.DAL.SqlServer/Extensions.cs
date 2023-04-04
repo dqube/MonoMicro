@@ -1,4 +1,6 @@
-﻿using $ext_projectname$.Abstractions;
+﻿using Humanizer.Configuration;
+using $ext_projectname$.Abstractions;
+using $ext_projectname$.Abstractions.Handlers;
 using $ext_projectname$.Abstractions.Kernel.Types;
 using $safeprojectname$.Internals;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +16,7 @@ public static class Extensions
     public static IServiceCollection AddSqlServer<T>(this IServiceCollection services, IConfiguration configuration)
         where T : DbContext
     {
-        var section = configuration.GetSection("connectionstring");
+        var section = configuration.GetSection("sqlserver");
         var options = section.BindOptions<SqlServerOptions>();
         services.Configure<SqlServerOptions>(section);
         if (!section.Exists())
@@ -50,4 +52,37 @@ public static class Extensions
     }
     public static IServiceCollection AddInitializer<T>(this IServiceCollection services) where T : class, IDataInitializer
         => services.AddTransient<IDataInitializer, T>();
+
+    public static IServiceCollection AddSqlServerModule(this IServiceCollection services)
+    {
+        var options = services.GetOptions<SqlServerOptions>("sqlserver");
+        services.AddSingleton(options);
+        services.AddSingleton(new UnitOfWorkTypeRegistry());        
+        return services;
+    }
+
+    //public static IServiceCollection AddTransactionalDecorators(this IServiceCollection services)
+    //{
+    //    services.TryDecorate(typeof(ICommandHandler<>), typeof(TransactionalCommandHandlerDecorator<>));
+    //    services.TryDecorate(typeof(IEventHandler<>), typeof(TransactionalEventHandlerDecorator<>));
+
+    //    return services;
+    //}
+
+    public static IServiceCollection AddSqlServerModule<T>(this IServiceCollection services) where T : DbContext
+    {
+        var options = services.GetOptions<SqlServerOptions>("sqlserver");
+        services.AddDbContext<T>(x => x.UseSqlServer(options.ConnectionString));
+        return services;
+    }
+
+    public static IServiceCollection AddUnitOfWork<T>(this IServiceCollection services) where T : class, IUnitOfWork
+    {
+        services.AddScoped<IUnitOfWork, T>();
+        services.AddScoped<T>();
+        using var serviceProvider = services.BuildServiceProvider();
+        serviceProvider.GetRequiredService<UnitOfWorkTypeRegistry>().Register<T>();
+
+        return services;
+    }
 }

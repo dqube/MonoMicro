@@ -16,6 +16,9 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Micro.Observability.csproj" File="Micro.Observability.csproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
+      </Folder>
       <Folder Name="Logging" TargetFolderName="Logging">
         <Folder Name="Decorators" TargetFolderName="Decorators">
           <ProjectItem ReplaceParameters="true" TargetFileName="LoggingCommandHandlerDecorator.cs">LoggingCommandHandlerDecorator.cs</ProjectItem>
