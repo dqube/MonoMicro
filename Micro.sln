@@ -53,18 +53,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{0785
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Abstractions", "src\BuildingBlocks\Micro.Abstractions\Micro.Abstractions.csproj", "{549D69A5-DFC0-4284-BA13-BF2F1FE3DE63}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers", "Customers", "{0A863E7A-0BE2-4C1C-ACC9-848667B8A130}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Module", "src\Modules\Customers\Micro.Modules.Customers.Module\Micro.Modules.Customers.Module.csproj", "{249DAC88-6E77-42AD-962F-DC96E87F54F1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Persistence", "src\Modules\Customers\Micro.Modules.Customers.Persistence\Micro.Modules.Customers.Persistence.csproj", "{7B2FBC9F-CF59-4C44-935F-48535F0BB5A9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Infrastructure", "src\Modules\Customers\Micro.Modules.Customers.Infrastructure\Micro.Modules.Customers.Infrastructure.csproj", "{E33CBE63-A5C2-4997-A6ED-762DAFF76202}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Application", "src\Modules\Customers\Micro.Modules.Customers.Application\Micro.Modules.Customers.Application.csproj", "{FB06A54E-5370-4110-A359-EF9F199AAEC8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Domain", "src\Modules\Customers\Micro.Modules.Customers.Domain\Micro.Modules.Customers.Domain.csproj", "{786EA6EC-9DAE-4BBF-9AB7-14B6DD2A6717}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.CustomerService", "src\Services\Customers\Micro.CustomerService\Micro.CustomerService.csproj", "{5B90B771-2BE3-4BD9-99B7-D32E18DF3E13}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Contracts", "src\BuildingBlocks\Micro.Contracts\Micro.Contracts.csproj", "{6FB7EB31-E672-4F26-9801-74CC1ED474DC}"
@@ -79,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Wallets.Appli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Wallets.Domain", "src\Modules\Wallets\Micro.Modules.Wallets.Domain\Micro.Modules.Wallets.Domain.csproj", "{520BD39A-24B8-4FCA-81EB-19FB38B0CBD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Modules.Wallets.Infrastructure", "src\Modules\Wallets\Micro.Modules.Wallets.Infrastructure\Micro.Modules.Wallets.Infrastructure.csproj", "{F4693D97-FFF6-4E83-A0B4-A6EF5FC656FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Wallets.Infrastructure", "src\Modules\Wallets\Micro.Modules.Wallets.Infrastructure\Micro.Modules.Wallets.Infrastructure.csproj", "{F4693D97-FFF6-4E83-A0B4-A6EF5FC656FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,26 +151,6 @@ Global
 		{549D69A5-DFC0-4284-BA13-BF2F1FE3DE63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{549D69A5-DFC0-4284-BA13-BF2F1FE3DE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{549D69A5-DFC0-4284-BA13-BF2F1FE3DE63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{249DAC88-6E77-42AD-962F-DC96E87F54F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{249DAC88-6E77-42AD-962F-DC96E87F54F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{249DAC88-6E77-42AD-962F-DC96E87F54F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{249DAC88-6E77-42AD-962F-DC96E87F54F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B2FBC9F-CF59-4C44-935F-48535F0BB5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B2FBC9F-CF59-4C44-935F-48535F0BB5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B2FBC9F-CF59-4C44-935F-48535F0BB5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B2FBC9F-CF59-4C44-935F-48535F0BB5A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E33CBE63-A5C2-4997-A6ED-762DAFF76202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E33CBE63-A5C2-4997-A6ED-762DAFF76202}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E33CBE63-A5C2-4997-A6ED-762DAFF76202}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E33CBE63-A5C2-4997-A6ED-762DAFF76202}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB06A54E-5370-4110-A359-EF9F199AAEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB06A54E-5370-4110-A359-EF9F199AAEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB06A54E-5370-4110-A359-EF9F199AAEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB06A54E-5370-4110-A359-EF9F199AAEC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{786EA6EC-9DAE-4BBF-9AB7-14B6DD2A6717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{786EA6EC-9DAE-4BBF-9AB7-14B6DD2A6717}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{786EA6EC-9DAE-4BBF-9AB7-14B6DD2A6717}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{786EA6EC-9DAE-4BBF-9AB7-14B6DD2A6717}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5B90B771-2BE3-4BD9-99B7-D32E18DF3E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5B90B771-2BE3-4BD9-99B7-D32E18DF3E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B90B771-2BE3-4BD9-99B7-D32E18DF3E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -240,12 +208,6 @@ Global
 		{007AD8BE-6374-488E-A845-7D2382F8A2B4} = {53B41D96-9477-4C47-A7C7-B20E7AFA90D7}
 		{0785D744-DB13-4668-853A-F8720D647CD2} = {53B41D96-9477-4C47-A7C7-B20E7AFA90D7}
 		{549D69A5-DFC0-4284-BA13-BF2F1FE3DE63} = {760E01F5-E6C8-4C41-B63E-9715C3043172}
-		{0A863E7A-0BE2-4C1C-ACC9-848667B8A130} = {0785D744-DB13-4668-853A-F8720D647CD2}
-		{249DAC88-6E77-42AD-962F-DC96E87F54F1} = {0A863E7A-0BE2-4C1C-ACC9-848667B8A130}
-		{7B2FBC9F-CF59-4C44-935F-48535F0BB5A9} = {0A863E7A-0BE2-4C1C-ACC9-848667B8A130}
-		{E33CBE63-A5C2-4997-A6ED-762DAFF76202} = {0A863E7A-0BE2-4C1C-ACC9-848667B8A130}
-		{FB06A54E-5370-4110-A359-EF9F199AAEC8} = {0A863E7A-0BE2-4C1C-ACC9-848667B8A130}
-		{786EA6EC-9DAE-4BBF-9AB7-14B6DD2A6717} = {0A863E7A-0BE2-4C1C-ACC9-848667B8A130}
 		{5B90B771-2BE3-4BD9-99B7-D32E18DF3E13} = {C9E78163-69C1-46AA-A46D-43B1EA1555F7}
 		{6FB7EB31-E672-4F26-9801-74CC1ED474DC} = {760E01F5-E6C8-4C41-B63E-9715C3043172}
 		{DFFEB46D-9268-44DC-AC3C-2303D52DB987} = {007AD8BE-6374-488E-A845-7D2382F8A2B4}

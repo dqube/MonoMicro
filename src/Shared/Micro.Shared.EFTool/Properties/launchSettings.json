@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "Micro.Modules.Customers.Infrastructure": {
+    "Micro.Shared.EFTool": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:57540;http://localhost:57541"
+      "applicationUrl": "https://localhost:63161;http://localhost:63162"
     }
   }
 }

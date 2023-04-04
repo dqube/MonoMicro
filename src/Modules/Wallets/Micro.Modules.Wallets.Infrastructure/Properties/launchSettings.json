@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "Micro.Modules.Customers.Domain": {
+    "Micro.Modules.Wallets.Infrastructure": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:57548;http://localhost:57549"
+      "applicationUrl": "https://localhost:63159;http://localhost:63160"
     }
   }
 }
