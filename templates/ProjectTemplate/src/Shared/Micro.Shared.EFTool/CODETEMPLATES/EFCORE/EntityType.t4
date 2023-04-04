@@ -1,0 +1,101 @@
+<#@ template debug="true" hostSpecific="true" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Design" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Relational" #>
+<#@ assembly name="Microsoft.Extensions.DependencyInjection.Abstractions" #>
+<#@ assembly name="Humanizer" #>
+<#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
+<#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
+<#@ parameter name="NamespaceHint" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
+<#@ import namespace="Humanizer" #>
+
+<#
+   // Template version: 703 - please do NOT remove this line
+   ///if(!System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Launch();
+    var services = (IServiceProvider)Host;
+    var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
+    var code = services.GetRequiredService<ICSharpHelper>();
+    var entityNameLower=EntityType.Name.ToString().ToLower();
+    var RootNamespace=Options.ModelNamespace.ToString().Remove((Options.ModelNamespace.Length)-7,7);
+    var entityNamespace=RootNamespace +"Persistence.Repository";
+    var usings = new List<string>
+    {
+        "System",
+        "System.Collections.Generic",
+        "FluentValidation",
+        RootNamespace + "Domain.Repository",
+        RootNamespace + "Models"
+    };
+
+   
+
+    if (!string.IsNullOrEmpty(NamespaceHint))
+    {
+#>
+namespace <#= NamespaceHint #>;
+
+<#
+    }   
+    var firstProperty=EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).FirstOrDefault();
+#>
+/// GetQueryById
+public sealed record <#= EntityType.Name #>Response();
+
+public sealed record Get<#= EntityType.Name #>(<#= code.Reference(firstProperty.ClrType) #> <#= firstProperty.Name #>) : IQuery<<#= EntityType.Name #>Response>;
+
+internal sealed class Get<#= EntityType.Name #>Handler : IQueryHandler<Get<#= EntityType.Name #>, <#= EntityType.Name #>Response>
+{
+    private readonly I<#= EntityType.Name #>Repository _<#= entityNameLower  #>Repository;
+
+    public Get<#= EntityType.Name #>Handler(
+        I<#= EntityType.Name  #>Repository <#= entityNameLower  #>Repository)
+    {
+        _<#= entityNameLower  #>Repository = <#= entityNameLower  #>Repository;
+    }
+public async Task<<#= EntityType.Name #>> Handle(Get<#= EntityType.Name #> query, CancellationToken cancellationToken)
+{
+<#= EntityType.Name #>? <#= entityNameLower  #> = await _<#= entityNameLower  #>Repository.FindByIdAsync(query.<#= firstProperty.Name #>,cancellationToken);
+return new <#= EntityType.Name #>Response();
+}
+}
+/// GetQueryList
+public record Browse<#= EntityType.Name #>s(<#= code.Reference(firstProperty.ClrType) #> <#= firstProperty.Name #>) : IQuery<IEnumerable<<#= EntityType.Name #>Response>>;
+
+internal sealed class Browse<#= EntityType.Name #>Handler : IQueryHandler<Browse<#= EntityType.Name #>s, IEnumerable<<#= EntityType.Name #>Response>>
+{
+    private readonly I<#= EntityType.Name #>Repository _<#= entityNameLower  #>Repository;
+
+    public Browse<#= EntityType.Name #>Handler(
+        I<#= EntityType.Name  #>Repository <#= entityNameLower  #>Repository)
+    {
+        _<#= entityNameLower  #>Repository = <#= entityNameLower  #>Repository;
+    }
+public async Task<IEnumerable<<#= EntityType.Name #>Response>> Handle(Browse<#= EntityType.Name #>s query, CancellationToken cancellationToken)
+{
+IEnumerable<<#= EntityType.Name #>>? <#= entityNameLower  #>s = await _<#= entityNameLower  #>Repository.AllAsync(cancellationToken);
+
+return new List<<#= EntityType.Name #>Response>();
+}
+}
+<#
+    var previousOutput = GenerationEnvironment;
+    GenerationEnvironment = new StringBuilder();
+
+    foreach (var ns in usings.Distinct().OrderBy(x => x, new NamespaceComparer()))
+    {
+#>
+using <#= ns #>;
+<#
+    }
+
+    WriteLine("");
+
+    GenerationEnvironment.Append(previousOutput);
+#>

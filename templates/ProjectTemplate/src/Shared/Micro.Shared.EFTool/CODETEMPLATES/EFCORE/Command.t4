@@ -1,0 +1,198 @@
+<#@ template debug="true" hostSpecific="true" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Design" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Relational" #>
+<#@ assembly name="Microsoft.Extensions.DependencyInjection.Abstractions" #>
+<#@ assembly name="Humanizer" #>
+<#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
+<#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
+<#@ parameter name="NamespaceHint" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
+<#@ import namespace="Humanizer" #>
+
+<#
+   // Template version: 703 - please do NOT remove this line
+   ///if(!System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Launch();
+    var services = (IServiceProvider)Host;
+    var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
+    var code = services.GetRequiredService<ICSharpHelper>();
+    var entityNameLower=EntityType.Name.ToString().ToLower();
+    var RootNamespace=Options.ModelNamespace.ToString().Remove((Options.ModelNamespace.Length)-8,8);
+    var entityNamespace=RootNamespace +"Persistence.Repository";
+    var usings = new List<string>
+    {
+        "System",
+        "System.Collections.Generic",
+        "FluentValidation",
+        RootNamespace + "Domain.Repository",
+        RootNamespace + "Models"
+    };
+
+   
+
+    if (!string.IsNullOrEmpty(NamespaceHint))
+    {
+#>
+namespace <#= entityNamespace #>;
+
+<#
+    }   
+    var firstProperty=EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).FirstOrDefault();
+#>
+/// Create
+public sealed record Create<#= EntityType.Name #>Command(
+<# 
+   foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
+    {
+    string lastprop = string.Empty;
+    var cPropertyNameLower= property.Name.ToString().Camelize();
+    if (property == EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).Last())
+        {
+        lastprop=string.Empty;
+        }
+        else
+        {
+        lastprop=",";
+        }
+   #>
+<#= code.Reference(property.ClrType) #> <#= cPropertyNameLower #><#= lastprop #>  
+<#
+    }
+#>
+) : ICommand<<#= code.Reference(firstProperty.ClrType) #>>;
+internal class Create<#= EntityType.Name #>CommandValidator : AbstractValidator<Create<#= EntityType.Name #>Command>
+{
+    public Create<#= EntityType.Name #>Validator()
+    {
+        //RuleFor(x => x.FirstName).NotEmpty().MaximumLength(FirstName.MaxLength);
+
+        //RuleFor(x => x.LastName).NotEmpty().MaximumLength(LastName.MaxLength);
+    }
+}
+internal sealed class Create<#= EntityType.Name #>CommandHandler : ICommandHandler<Create<#= EntityType.Name #>Command, <#= code.Reference(firstProperty.ClrType) #>>
+{
+    private readonly I<#= EntityType.Name #>Repository _<#= entityNameLower  #>Repository;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public Create<#= EntityType.Name #>CommandHandler(
+        I<#= EntityType.Name  #>Repository <#= entityNameLower  #>Repository,
+        IUnitOfWork unitOfWork)
+    {
+        _<#= entityNameLower  #>Repository = <#= entityNameLower  #>Repository;
+        _unitOfWork = unitOfWork;
+    }
+public async Task<<#= code.Reference(firstProperty.ClrType) #>> Handle(Create<#= EntityType.Name #>Command request, CancellationToken cancellationToken)
+{
+var <#= entityNameLower  #> = <#= EntityType.Name #>.Create(
+<# 
+   foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
+    {
+    string lastprop = string.Empty;
+    var cPropertyNameLower= property.Name.ToString().Camelize();
+    if (property == EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).Last())
+        {
+        lastprop=string.Empty;
+        }
+        else
+        {
+        lastprop=",";
+        }
+#>
+request.<#= cPropertyNameLower #><#= lastprop #>  
+<#
+    }
+#>);
+var entity = await _<#= entityNameLower  #>Repository.AddAsync(<#= entityNameLower  #>,cancellationToken);
+await _unitOfWork.SaveChangesAsync(cancellationToken);
+return entity.<#= firstProperty.Name #>;
+ }
+}
+/// Update
+public sealed record Update<#= EntityType.Name #>Command(
+<# 
+   foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
+    {
+    string lastprop = string.Empty;
+    var cPropertyNameLower= property.Name.ToString().Camelize();
+    if (property == EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).Last())
+        {
+        lastprop=string.Empty;
+        }
+        else
+        {
+        lastprop=",";
+        }
+   #>
+<#= code.Reference(property.ClrType) #> <#= cPropertyNameLower #><#= lastprop #>  
+<#
+    }
+#>
+) : ICommand<<#= code.Reference(firstProperty.ClrType) #>>;
+internal class Update<#= EntityType.Name #>CommandValidator : AbstractValidator<Update<#= EntityType.Name #>Command>
+{
+    public Update<#= EntityType.Name #>Validator()
+    {
+        //RuleFor(x => x.FirstName).NotEmpty().MaximumLength(FirstName.MaxLength);
+
+        //RuleFor(x => x.LastName).NotEmpty().MaximumLength(LastName.MaxLength);
+    }
+}
+internal sealed class Update<#= EntityType.Name #>CommandHandler : ICommandHandler<Update<#= EntityType.Name #>Command, <#= code.Reference(firstProperty.ClrType) #>>
+{
+    private readonly I<#= EntityType.Name #>Repository _<#= entityNameLower  #>Repository;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public Create<#= EntityType.Name #>CommandHandler(
+        I<#= EntityType.Name  #>Repository <#= entityNameLower  #>Repository,
+        IUnitOfWork unitOfWork)
+    {
+        _<#= entityNameLower  #>Repository = <#= entityNameLower  #>Repository;
+        _unitOfWork = unitOfWork;
+    }
+public async Task<<#= code.Reference(firstProperty.ClrType) #>> Handle(Update<#= EntityType.Name #>Command request, CancellationToken cancellationToken)
+{
+var <#= entityNameLower  #> = <#= EntityType.Name #>.Create(
+<# 
+   foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
+    {
+    string lastprop = string.Empty;
+    var cPropertyNameLower= property.Name.ToString().Camelize();
+    if (property == EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).Last())
+        {
+        lastprop=string.Empty;
+        }
+        else
+        {
+        lastprop=",";
+        }
+#>
+request.<#= cPropertyNameLower #><#= lastprop #>  
+<#
+    }
+#>);
+var entity = await _<#= entityNameLower  #>Repository.UpdateAsync(<#= entityNameLower  #>,cancellationToken);
+await _unitOfWork.SaveChangesAsync(cancellationToken);
+return entity.<#= firstProperty.Name #>;
+ }
+}
+<#
+    var previousOutput = GenerationEnvironment;
+    GenerationEnvironment = new StringBuilder();
+
+    foreach (var ns in usings.Distinct().OrderBy(x => x, new NamespaceComparer()))
+    {
+#>
+using <#= ns #>;
+<#
+    }
+
+    WriteLine("");
+
+    GenerationEnvironment.Append(previousOutput);
+#>

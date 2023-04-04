@@ -88,7 +88,9 @@
 
         </SolutionFolder>
         <SolutionFolder Name="Shared">
-
+          <ProjectTemplateLink ProjectName="$projectname$.Shared.EFTool" CopyParameters="true">
+            src\Shared\Micro.Shared.EFTool\MyTemplate.vstemplate
+          </ProjectTemplateLink>
         </SolutionFolder>
       </SolutionFolder>
 
