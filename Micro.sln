@@ -69,6 +69,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Wallets.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Wallets.Infrastructure", "src\Modules\Wallets\Micro.Modules.Wallets.Infrastructure\Micro.Modules.Wallets.Infrastructure.csproj", "{F4693D97-FFF6-4E83-A0B4-A6EF5FC656FD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers", "Customers", "{7F59AA77-0B53-49DD-AD33-F816057F2C0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Api", "src\Modules\Customers\Micro.Modules.Customers.Api\Micro.Modules.Customers.Api.csproj", "{AA7354D3-5870-4F42-A50F-29BEBE529ECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Modules.Customers.Application", "src\Modules\Customers\Micro.Modules.Customers.Application\Micro.Modules.Customers.Application.csproj", "{E43A07D0-574E-47AB-9114-DD656AA50016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Modules.Customers.Core", "src\Modules\Customers\Micro.Modules.Customers.Core\Micro.Modules.Customers.Core.csproj", "{69D49A53-D001-4CD2-B25A-62807316F67D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Modules.Customers.Infrastructure", "src\Modules\Customers\Micro.Modules.Customers.Infrastructure\Micro.Modules.Customers.Infrastructure.csproj", "{4697D228-4C48-4715-B595-07BB4A5415E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,6 +189,22 @@ Global
 		{F4693D97-FFF6-4E83-A0B4-A6EF5FC656FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4693D97-FFF6-4E83-A0B4-A6EF5FC656FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4693D97-FFF6-4E83-A0B4-A6EF5FC656FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA7354D3-5870-4F42-A50F-29BEBE529ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7354D3-5870-4F42-A50F-29BEBE529ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7354D3-5870-4F42-A50F-29BEBE529ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7354D3-5870-4F42-A50F-29BEBE529ECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E43A07D0-574E-47AB-9114-DD656AA50016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E43A07D0-574E-47AB-9114-DD656AA50016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E43A07D0-574E-47AB-9114-DD656AA50016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E43A07D0-574E-47AB-9114-DD656AA50016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69D49A53-D001-4CD2-B25A-62807316F67D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69D49A53-D001-4CD2-B25A-62807316F67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69D49A53-D001-4CD2-B25A-62807316F67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69D49A53-D001-4CD2-B25A-62807316F67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4697D228-4C48-4715-B595-07BB4A5415E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4697D228-4C48-4715-B595-07BB4A5415E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4697D228-4C48-4715-B595-07BB4A5415E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4697D228-4C48-4715-B595-07BB4A5415E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -216,6 +242,11 @@ Global
 		{4CCB150D-DEC7-490F-B59C-803BD3930D71} = {D7E504A3-0744-4533-95C7-C13C26CA1713}
 		{520BD39A-24B8-4FCA-81EB-19FB38B0CBD4} = {D7E504A3-0744-4533-95C7-C13C26CA1713}
 		{F4693D97-FFF6-4E83-A0B4-A6EF5FC656FD} = {D7E504A3-0744-4533-95C7-C13C26CA1713}
+		{7F59AA77-0B53-49DD-AD33-F816057F2C0F} = {0785D744-DB13-4668-853A-F8720D647CD2}
+		{AA7354D3-5870-4F42-A50F-29BEBE529ECA} = {7F59AA77-0B53-49DD-AD33-F816057F2C0F}
+		{E43A07D0-574E-47AB-9114-DD656AA50016} = {7F59AA77-0B53-49DD-AD33-F816057F2C0F}
+		{69D49A53-D001-4CD2-B25A-62807316F67D} = {7F59AA77-0B53-49DD-AD33-F816057F2C0F}
+		{4697D228-4C48-4715-B595-07BB4A5415E4} = {7F59AA77-0B53-49DD-AD33-F816057F2C0F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5AD5D98E-6E6F-4F48-848D-9BF19E5436BE}

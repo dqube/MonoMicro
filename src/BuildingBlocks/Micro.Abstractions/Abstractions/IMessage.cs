@@ -4,3 +4,6 @@ namespace Micro.Abstractions.Abstractions;
 public interface IMessage
 {
 }
+public interface IMessage<TResponse>
+{
+}
