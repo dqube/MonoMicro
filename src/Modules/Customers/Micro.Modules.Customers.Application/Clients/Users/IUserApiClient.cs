@@ -2,8 +2,9 @@
 
 namespace Micro.Modules.Customers.Application.Clients.Users;
 
-public interface IUserApiClient
+internal interface IUserApiClient
 {
-    Task<UserDto> GetRegularAgendaSlotAsync(int id);
-    Task<IEnumerable<UserDto>> GetAgendaAsync(int conferenceId);
+    Task<UserDto> GetUserByMail(string email);
+    Task<UserDto> GetUserAsync(int id);
+    Task<IEnumerable<UserDto>> GetUsersAsync(int conferenceId);
 }

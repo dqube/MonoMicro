@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -17,6 +17,5 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\Micro.DAL.SqlServer\Micro.DAL.SqlServer.csproj" />
     <ProjectReference Include="..\Micro.Modules.Customers.Application\Micro.Modules.Customers.Application.csproj" />
   </ItemGroup>
-  
-  
+    
 </Project>

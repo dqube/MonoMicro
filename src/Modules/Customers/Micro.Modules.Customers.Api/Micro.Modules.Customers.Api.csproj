@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Micro.Modules\Micro.Modules.csproj" />
     <ProjectReference Include="..\Micro.Modules.Customers.Infrastructure\Micro.Modules.Customers.Infrastructure.csproj" />
   </ItemGroup>
 
