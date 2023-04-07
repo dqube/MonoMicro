@@ -1,5 +1,3 @@
-using Micro.Abstractions.Kernel.Types;
-
 namespace Micro.Modules.Customers.Core.Customers.ValueObjects;
 
 internal record struct WalletId

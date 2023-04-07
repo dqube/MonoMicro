@@ -3,6 +3,7 @@ using Micro.Modules.Customers.Application.Customers.DTO;
 using Micro.Modules.Customers.Infrastructure.DAL;
 using Micro.Modules.Customers.Application.Customers.Queries;
 using Microsoft.EntityFrameworkCore;
+using Micro.Modules.Customers.Infrastructure.DAL.Mappings;
 
 namespace Micro.Modules.Customers.Core.Queries.Handlers;
 

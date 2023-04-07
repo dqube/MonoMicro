@@ -20,7 +20,7 @@ internal sealed class UpdateCustomerHandler : ICommandHandler<UpdateCustomer>
            command.customerId,
            command.Name
            );
-        await _customerRepository.AddAsync(customer);
+        await _customerRepository.UpdateAsync(customer);
         _logger.LogInformation($"Customer {command.customerId} updated sucessfully'.");
     }
 }

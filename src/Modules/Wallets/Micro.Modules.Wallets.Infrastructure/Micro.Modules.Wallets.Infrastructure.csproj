@@ -17,16 +17,16 @@
     <Folder Include="EF\Mappings\" />
     <Folder Include="EF\Migrations\" />
   </ItemGroup>
-  <ItemGroup>
-    <!--<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+  <!--<ItemGroup>
+    --><!--<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>-->
-  </ItemGroup>
+    </PackageReference>--><!--
+  </ItemGroup>-->
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Micro.DAL.SqlServer\Micro.DAL.SqlServer.csproj" />
     <ProjectReference Include="..\Micro.Modules.Wallets.Application\Micro.Modules.Wallets.Application.csproj" />

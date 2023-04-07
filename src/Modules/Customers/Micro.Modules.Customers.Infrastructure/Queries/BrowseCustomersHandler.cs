@@ -4,6 +4,7 @@ using Micro.DAL.SqlServer;
 using Micro.Modules.Customers.Application.Customers.DTO;
 using Micro.Modules.Customers.Application.Customers.Queries;
 using Micro.Modules.Customers.Infrastructure.DAL;
+using Micro.Modules.Customers.Infrastructure.DAL.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace Micro.Modules.Customers.Core.Queries.Handlers;
@@ -24,6 +25,6 @@ internal sealed class BrowseCustomersHandler : IQueryHandler<BrowseCustomers, Pa
         return customers.AsNoTracking()
             .OrderByDescending(x => x.CreatedAt)
             .Select(x => x.AsDto())
-            .PaginateAsync((IPagedQuery<CustomerDto>)query, cancellationToken);
+            .PaginateAsync(query,cancellationToken);
     }
 }

@@ -1,6 +1,3 @@
-using Micro.Abstractions.Kernel.Types;
-using Micro.Modules.Customers.Core.Customers.ValueObjects;
-
 namespace Micro.Modules.Customers.Core.Customers.ValueObjects;
 
 

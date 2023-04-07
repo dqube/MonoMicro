@@ -1,5 +1,4 @@
-﻿using Micro.Abstractions.Kernel.Types;
-using Micro.Modules.Customers.Core.Customers.Exceptions;
+﻿using Micro.Modules.Customers.Core.Customers.Exceptions;
 
 namespace Micro.Modules.Customers.Core.Customers.ValueObjects;
 

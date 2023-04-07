@@ -23,15 +23,15 @@ internal class CustomerRepository : ICustomerRepository
 
 
 
-    public async Task AddAsync(Customer wallet)
+    public async Task AddAsync(Customer customer)
     {
-        await _customers.AddAsync(wallet);
+        await _customers.AddAsync(customer);
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(Customer wallet)
+    public async Task UpdateAsync(Customer customer)
     {
-        _customers.Update(wallet);
+        _customers.Update(customer);
         await _context.SaveChangesAsync();
     }
 }

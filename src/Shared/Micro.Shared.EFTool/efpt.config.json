@@ -15,11 +15,11 @@
    "SelectedToBeGenerated": 0,
    "Tables": [
       {
-         "Name": "[dbo].[Attendees]",
+         "Name": "[customers].[Customers]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Customers]",
+         "Name": "[dbo].[Attendees]",
          "ObjectType": 0
       },
       {
@@ -56,6 +56,18 @@
       },
       {
          "Name": "[dbo].[Roles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[wallets].[Owners]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[wallets].[Transfers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[wallets].[Wallets]",
          "ObjectType": 0
       }
    ],

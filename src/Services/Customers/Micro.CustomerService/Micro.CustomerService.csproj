@@ -12,6 +12,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <ProjectReference Include="..\..\..\BuildingBlocks\Micro.Framework\Micro.Framework.csproj" />
+    <ProjectReference Include="..\..\..\Modules\Customers\Micro.Modules.Customers.Api\Micro.Modules.Customers.Api.csproj" />
     <ProjectReference Include="..\..\..\Modules\Wallets\Micro.Modules.Wallets.Api\Micro.Modules.Wallets.Api.csproj" />
   </ItemGroup>
 

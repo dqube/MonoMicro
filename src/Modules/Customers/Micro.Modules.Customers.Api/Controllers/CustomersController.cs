@@ -3,6 +3,7 @@ using Micro.Abstractions.Pagination;
 using Micro.Modules.Customers.Application.Customers;
 using Micro.Modules.Customers.Application.Customers.DTO;
 using Micro.Modules.Customers.Application.Customers.Queries;
+using Micro.Modules.Customers.Core.Customers.ValueObjects;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -62,7 +63,6 @@ internal class CustomersController : Controller
     {
         await _dispatcher.SendAsync(command);
         return NoContent();
-    }
-        
+    }       
   
 }
