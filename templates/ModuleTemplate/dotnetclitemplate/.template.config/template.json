@@ -27,7 +27,7 @@
       "replaces": "BASEREF-NAME",
       "valueSource": "SolutionName",
       "valueTransform": "firstUpperCaseInvariant",
-      "fileRename": "micro"
+      "fileRename": "Micro"
     },
     "ModuleName": {
       "type": "parameter",
