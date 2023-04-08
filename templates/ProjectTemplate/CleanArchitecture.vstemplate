@@ -11,12 +11,13 @@
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <TemplateGroupID>Champions</TemplateGroupID>
     <Icon>__TemplateIcon.png</Icon>
   </TemplateData>
   <TemplateContent>
     <ProjectCollection>
-      <SolutionFolder Name="src">
-        <SolutionFolder Name="BuildingBlocks">
+      <SolutionFolder Name="src" CreateOnDisk="true">
+        <SolutionFolder Name="BuildingBlocks" CreateOnDisk="true">
           <ProjectTemplateLink ProjectName="$projectname$.Abstractions" CopyParameters="true">
             src\BuildingBlocks\Micro.Abstractions\MyTemplate.vstemplate
           </ProjectTemplateLink>
@@ -78,16 +79,16 @@
             src\BuildingBlocks\Micro.Transactions\MyTemplate.vstemplate
           </ProjectTemplateLink>
         </SolutionFolder>
-        <SolutionFolder Name="APIGateways">
+        <SolutionFolder Name="APIGateways" CreateOnDisk="true">
 
         </SolutionFolder>
-        <SolutionFolder Name="Services">
+        <SolutionFolder Name="Services" CreateOnDisk="true">
 
         </SolutionFolder>
-        <SolutionFolder Name="Modules">
+        <SolutionFolder Name="Modules" CreateOnDisk="true">
 
         </SolutionFolder>
-        <SolutionFolder Name="Shared">
+        <SolutionFolder Name="Shared" CreateOnDisk="true">
           <ProjectTemplateLink ProjectName="$projectname$.Shared.EFTool" CopyParameters="true">
             src\Shared\Micro.Shared.EFTool\MyTemplate.vstemplate
           </ProjectTemplateLink>

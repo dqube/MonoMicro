@@ -1,9 +1,9 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Champions",
-  "classifications": [".NET", "Modular Monolith", "Micro Service", "Web"],
-  "name": "Champions",
-  "description": "Modules for monolith micro service application",
+  "classifications": [ ".NET", "Modular Monolith", "Micro Service", "Web" ],
+  "name": "Champions-Module Template",
+  "description": "Modules for monolith and micro service application",
   "groupIdentity": "Micro.Modules",
   "identity": "Micro.Modules.CSharp",
   "shortName": "modules",
@@ -34,7 +34,7 @@
       "datatype": "string",
       "defaultValue": "Customer",
       "description": "The Module of the project which determines the assembly product name."
-    },  
+    },
     "ClientName": {
       "type": "parameter",
       "datatype": "string",
