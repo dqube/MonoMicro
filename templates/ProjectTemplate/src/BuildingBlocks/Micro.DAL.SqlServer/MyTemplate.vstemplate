@@ -19,7 +19,6 @@
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
       </Folder>
-      <Folder Name=".vs" TargetFolderName=".vs" />
       <Folder Name="Internals" TargetFolderName="Internals">
         <ProjectItem ReplaceParameters="true" TargetFileName="DatabaseInitializer.cs">DatabaseInitializer.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="DataInitializer.cs">DataInitializer.cs</ProjectItem>

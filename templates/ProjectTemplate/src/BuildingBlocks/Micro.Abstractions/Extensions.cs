@@ -63,7 +63,7 @@ public static class Extensions
             return string.Empty;
         }
 
-        return type.Namespace.StartsWith("Micro.Modules.")
+        return type.Namespace.StartsWith("$ext_projectname$.Modules.")
             ? type.Namespace.Split(".")[2].ToLowerInvariant()
             : string.Empty;
     }

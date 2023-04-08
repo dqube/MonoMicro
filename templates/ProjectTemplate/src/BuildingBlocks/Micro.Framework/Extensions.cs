@@ -190,12 +190,14 @@ public static class Extensions
             module.Use(app);
         }
         app.ValidateContracts(_assemblies);
+#pragma warning disable ASP0014 // Suggest using top level route registrations
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
             endpoints.MapGet("/", context => context.Response.WriteAsync(options.Name));
             endpoints.MapModuleInfo();
         });
+#pragma warning restore ASP0014 // Suggest using top level route registrations
 
         _assemblies.Clear();
         _modules.Clear();

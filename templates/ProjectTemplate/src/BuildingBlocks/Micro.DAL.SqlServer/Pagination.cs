@@ -5,7 +5,7 @@ namespace $safeprojectname$;
 
 public static class Pagination
 {
-    public static Task<Paged<T>> PaginateAsync<T>(this IQueryable<T> data, IPagedQuery<T> query,
+    public static Task<Paged<T>> PaginateAsync<T>(this IQueryable<T> data, IPagedQuery query,
         CancellationToken cancellationToken = default)
         => data.PaginateAsync(query.Page, query.Results, cancellationToken);
 

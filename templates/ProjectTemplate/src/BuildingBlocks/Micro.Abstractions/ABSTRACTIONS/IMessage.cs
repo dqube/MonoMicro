@@ -4,3 +4,6 @@ namespace $safeprojectname$.Abstractions;
 public interface IMessage
 {
 }
+public interface IMessage<TResponse>
+{
+}
