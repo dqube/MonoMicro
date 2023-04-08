@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+   
+  <ItemGroup>
+    <None Remove="module.persons.development.json" />
+    <None Remove="module.persons.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="module.persons.development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="module.persons.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Micro.Modules\Micro.Modules.csproj" />
+    <ProjectReference Include="..\Micro.Modules.Persons.Infrastructure\Micro.Modules.Persons.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Champions",
+  "classifications": [".NET", "Modular Monolith", "Micro Service", "Web"],
+  "name": "Champions",
+  "description": "Modules for monolith micro service application",
+  "groupIdentity": "Micro.Modules",
+  "identity": "Micro.Modules.CSharp",
+  "shortName": "modules",
+  "defaultName": "Micro.Modules.Customers",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Micro.Modules.Customers",
+  "preferNameDirectory": true,
+
+  "symbols": {
+    "SolutionName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "CGX",
+      "description": "The namespace of the project which determines the assembly product name."
+    },
+    "SolutionNameFirstLetterUppercase": {
+      "type": "derived",
+      "replaces": "BASEREF-NAME",
+      "valueSource": "SolutionName",
+      "valueTransform": "firstUpperCaseInvariant",
+      "fileRename": "micro"
+    },
+    "ModuleName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "Customer",
+      "description": "The Module of the project which determines the assembly product name."
+    },  
+    "ClientName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "User",
+      "replaces": "User",
+      "fileRename": "User",
+      "description": "The client module which we are using in it this module."
+    },
+    "ModuleNameFirstLetterUppercase": {
+      "type": "derived",
+      "datatype": "string",
+      "replaces": "Customer",
+      "valueSource": "ModuleName",
+      "valueTransform": "firstUpperCaseInvariant",
+      "fileRename": "Customer"
+    },
+    "ModuleNameLowercase": {
+      "type": "derived",
+      "datatype": "string",
+      "replaces": "customer",
+      "valueSource": "ModuleName",
+      "valueTransform": "lowerCaseInvariant",
+      "fileRename": "customer"
+    }
+  }
+}

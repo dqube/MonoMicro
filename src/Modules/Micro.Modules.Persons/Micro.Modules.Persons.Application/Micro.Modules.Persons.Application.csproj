@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Micro.Modules.Persons.Api"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Persons.Infrastructure"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Persons.Tests.Contract"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Persons.Tests.EndToEnd"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Persons.Tests.Integration"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Persons.Tests.Unit"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2"></InternalsVisibleTo>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Micro.Modules.Persons.Core\Micro.Modules.Persons.Core.csproj" />
+  </ItemGroup>
+</Project>

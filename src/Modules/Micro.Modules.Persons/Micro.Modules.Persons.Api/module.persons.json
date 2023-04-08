@@ -1,0 +1,9 @@
+{
+  "persons": {
+    "module": {
+      "name": "Persons",
+      "enabled": true
+    }
+  }
+}
+

@@ -1,5 +1,4 @@
-﻿using Micro.Abstractions.Handlers;
-using Micro.Modules.Customers.Application.Clients.Users;
+﻿using BASEREF-NAME.Abstractions.Handlers;
 using Micro.Modules.Customers.Core.Customers.Entities;
 using Micro.Modules.Customers.Core.Customers.Repositories;
 using Microsoft.Extensions.Logging;
@@ -10,19 +9,16 @@ internal sealed class AddCustomerHandler : ICommandHandler<AddCustomer>
 {
     private readonly ICustomerRepository _customerRepository;
     private readonly ILogger<AddCustomerHandler> _logger;
-    private readonly IUserApiClient _userApiClient;
-    public AddCustomerHandler(ICustomerRepository customerRepository, ILogger<AddCustomerHandler> logger, IUserApiClient userApiClient)
+    public AddCustomerHandler(ICustomerRepository customerRepository, ILogger<AddCustomerHandler> logger)
     {
         _customerRepository = customerRepository;
         _logger = logger;
-        _userApiClient = userApiClient;
     }
 
 
 
     public async Task HandleAsync(AddCustomer command, CancellationToken cancellationToken = default)
     {
-        var user = _userApiClient.GetUserAsync(1);
         var customer = Customer.Create(
            command.customerId,
            command.Name

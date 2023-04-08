@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+   
+  <ItemGroup>
+    <None Remove="module.customers.development.json" />
+    <None Remove="module.customers.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="module.customers.development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="module.customers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\BASEREF-NAME.Modules\BASEREF-NAME.Modules.csproj" />
+    <ProjectReference Include="..\Micro.Modules.Customers.Infrastructure\Micro.Modules.Customers.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

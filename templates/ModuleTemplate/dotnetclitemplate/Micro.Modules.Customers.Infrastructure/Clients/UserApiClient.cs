@@ -1,4 +1,4 @@
-﻿using Micro.Abstractions.Modules;
+﻿using BASEREF-NAME.Abstractions.Modules;
 using Micro.Modules.Customers.Application.Clients.Users;
 using Micro.Modules.Customers.Application.Clients.Users.DTO;
 using Micro.Modules.Customers.Infrastructure.Clients.Requests;
@@ -21,9 +21,9 @@ internal sealed class UserApiClient : IUserApiClient
 
     public Task<UserDto> GetUserAsync(int id)
     => _client.SendAsync<UserDto>("users/get",
-                new GetUser
+                new UserDto
                 {
-                    UserId = id
+                    Id = id
                 });
 
     public Task<UserDto> GetUserByMail(string email)

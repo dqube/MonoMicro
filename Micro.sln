@@ -73,11 +73,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers", "Customers", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Api", "src\Modules\Customers\Micro.Modules.Customers.Api\Micro.Modules.Customers.Api.csproj", "{AA7354D3-5870-4F42-A50F-29BEBE529ECA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Modules.Customers.Application", "src\Modules\Customers\Micro.Modules.Customers.Application\Micro.Modules.Customers.Application.csproj", "{E43A07D0-574E-47AB-9114-DD656AA50016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Application", "src\Modules\Customers\Micro.Modules.Customers.Application\Micro.Modules.Customers.Application.csproj", "{E43A07D0-574E-47AB-9114-DD656AA50016}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Modules.Customers.Core", "src\Modules\Customers\Micro.Modules.Customers.Core\Micro.Modules.Customers.Core.csproj", "{69D49A53-D001-4CD2-B25A-62807316F67D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Core", "src\Modules\Customers\Micro.Modules.Customers.Core\Micro.Modules.Customers.Core.csproj", "{69D49A53-D001-4CD2-B25A-62807316F67D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Modules.Customers.Infrastructure", "src\Modules\Customers\Micro.Modules.Customers.Infrastructure\Micro.Modules.Customers.Infrastructure.csproj", "{4697D228-4C48-4715-B595-07BB4A5415E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Modules.Customers.Infrastructure", "src\Modules\Customers\Micro.Modules.Customers.Infrastructure\Micro.Modules.Customers.Infrastructure.csproj", "{4697D228-4C48-4715-B595-07BB4A5415E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
