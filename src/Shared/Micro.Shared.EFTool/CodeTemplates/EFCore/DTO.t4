@@ -65,7 +65,7 @@ namespace <#= NamespaceHint #>;
         }
     }
 #>
-public class <#= EntityType.Name #>DTO
+public class <#= EntityType.Name #>Dto
 {
 <#
     var firstProperty = true;
@@ -125,7 +125,7 @@ public class <#= EntityType.Name #>DTO
         if (navigation.IsCollection)
         {
 #>
-    public List<<#= targetType #>DTO> <#= navigation.Name #> { get; set; } = new List<<#= targetType #>DTO>();
+    public List<<#= targetType #>Dto> <#= navigation.Name #> { get; set; } = new List<<#= targetType #>Dto>();
 <#
         }
         else
@@ -133,7 +133,7 @@ public class <#= EntityType.Name #>DTO
             var needsNullable = Options.UseNullableReferenceTypes && !(navigation.ForeignKey.IsRequired && navigation.IsOnDependent);
             var needsInitializer = Options.UseNullableReferenceTypes && navigation.ForeignKey.IsRequired && navigation.IsOnDependent;
 #>
-    public <#= targetType #>DTO<#= needsNullable ? "?" : "" #> <#= navigation.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
+    public <#= targetType #>Dto<#= needsNullable ? "?" : "" #> <#= navigation.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
 <#
         }
     }
@@ -152,7 +152,7 @@ public class <#= EntityType.Name #>DTO
             }
         }
 #>
-    public List<<#= skipNavigation.TargetEntityType.Name #>DTO> <#= skipNavigation.Name #> { get; set; } = new List<<#= skipNavigation.TargetEntityType.Name #>DTO>();
+    public List<<#= skipNavigation.TargetEntityType.Name #>Dto> <#= skipNavigation.Name #> { get; set; } = new List<<#= skipNavigation.TargetEntityType.Name #>Dto>();
 <#
     }
 #>

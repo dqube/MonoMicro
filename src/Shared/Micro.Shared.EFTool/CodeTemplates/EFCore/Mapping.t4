@@ -23,13 +23,14 @@
     var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
     var code = services.GetRequiredService<ICSharpHelper>();
     var entityNameLower=EntityType.Name.ToString().ToLower();
-    var RootNamespace=Options.ModelNamespace.ToString().Remove((Options.ModelNamespace.Length)-7,7);
+    var RootNamespace=Options.ModelNamespace.ToString().Remove((Options.ModelNamespace.Length)-8,8);
     var entityNamespace=RootNamespace +"Persistence.Repository";
     var usings = new List<string>
     {
         "System",
         "System.Collections.Generic",
-        //RootNamespace + "Domain.Repository",
+        "FluentValidation",
+        RootNamespace + "Domain.Repository",
         RootNamespace + "Models"
     };
 
@@ -38,62 +39,48 @@
     if (!string.IsNullOrEmpty(NamespaceHint))
     {
 #>
-namespace <#= NamespaceHint #>;
+namespace <#= entityNamespace #>;
 
 <#
     }   
     var firstProperty=EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).FirstOrDefault();
 #>
-/// GetQueryById
-internal class <#= EntityType.Name #>DetailsDto : <#= EntityType.Name #>Dto
+/// Create
+internal static class <#= EntityType.Name #>sExtensions
 {
-}
-internal class Get<#= EntityType.Name #> : IQuery<<#= EntityType.Name #>DetailsDto>
-{
-    public <#= code.Reference(firstProperty.ClrType) #> <#= firstProperty.Name #> { get; set; }
-}
-internal class Browse<#= EntityType.Name #>s : PagedQuery<<#= EntityType.Name #>Dto>
-{
-    
-}
-internal sealed class Get<#= EntityType.Name #>Handler : IQueryHandler<Get<#= EntityType.Name #>, <#= EntityType.Name #>DetailsDto>
-{
-    private readonly <#= Options.ContextName #> _dbContext;
+    public static <#= EntityType.Name #>Dto AsDto(this <#= EntityType.Name #> <#= entityNameLower #>)
+        => <#= entityNameLower #>.Map<<#= EntityType.Name #>Dto>();
 
-    public Get<#= EntityType.Name #>Handler(<#= Options.ContextName #> dbContext)
+    public static <#= EntityType.Name #>DetailsDto AsDetailsDto(this <#= EntityType.Name #> <#= entityNameLower #>)
     {
-        _dbContext = dbContext;
+        var dto = <#= entityNameLower #>.Map<<#= EntityType.Name #>DetailsDto>();     
+
+        return dto;
     }
 
-    public async Task<<#= EntityType.Name #>DetailsDto?> HandleAsync(Get<#= EntityType.Name #> query, CancellationToken cancellationToken = default)
+    private static T Map<T>(this <#= EntityType.Name #> <#= entityNameLower #>) where T : <#= EntityType.Name #>Dto, new()
+        => new()
+        {
+<# 
+   foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
     {
-       <#= EntityType.Name #>? <#= entityNameLower  #> = await _dbContext.<#= EntityType.Name #>s
-            .AsNoTracking()
-            .SingleOrDefaultAsync(x => x.Id == query.<#= firstProperty.Name #>, cancellationToken);
-
-        return <#= entityNameLower  #>?.AsDetailsDto();
+    string lastprop = string.Empty;
+    var cPropertyNameLower= property.Name.ToString().Camelize();
+    if (property == EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).Last())
+        {
+        lastprop=string.Empty;
+        }
+        else
+        {
+        lastprop=",";
+        }
+   #>
+   <#= property.Name #> =<#= entityNameLower #>.<#= property.Name #><#= lastprop #> 
+<#
     }
-}
+#>
+ };
 
-/// GetQueryList
-internal sealed class Browse<#= EntityType.Name #>sHandler : IQueryHandler<Browse<#= EntityType.Name #>s, Paged<<#= EntityType.Name #>Dto>>
-{
-    private readonly <#= EntityType.Name #> _dbContext;
-
-    public Browse<#= EntityType.Name #>sHandler(<#= EntityType.Name #> dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
-    public Task<Paged<<#= EntityType.Name #>Dto>> HandleAsync(Browse<#= EntityType.Name #>s query, CancellationToken cancellationToken = default)
-    {
-        var <#= entityNameLower  #>s = _dbContext.Customers.AsQueryable();
-       
-        return <#= entityNameLower  #>s.AsNoTracking()
-            .OrderByDescending(x => x.CreatedAt)
-            .Select(x => x.AsDto())
-            .PaginateAsync(query,cancellationToken);
-    }
 }
 
 <#

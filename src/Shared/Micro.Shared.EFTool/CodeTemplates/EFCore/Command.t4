@@ -29,7 +29,7 @@
     {
         "System",
         "System.Collections.Generic",
-        "FluentValidation",
+       // "FluentValidation",
         RootNamespace + "Domain.Repository",
         RootNamespace + "Models"
     };
@@ -113,7 +113,7 @@ request.<#= cPropertyNameLower #><#= lastprop #>
  }
 }
 /// Update
-public sealed record Update<#= EntityType.Name #>(
+internal record Update<#= EntityType.Name #>(
 <# 
    foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
     {
