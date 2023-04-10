@@ -46,7 +46,7 @@ namespace <#= entityNamespace #>;
     var firstProperty=EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).FirstOrDefault();
 #>
 /// Create
-public sealed record Create<#= EntityType.Name #>Command(
+internal record Add<#= EntityType.Name #>(
 <# 
    foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
     {
@@ -66,28 +66,28 @@ public sealed record Create<#= EntityType.Name #>Command(
     }
 #>
 ) : ICommand<<#= code.Reference(firstProperty.ClrType) #>>;
-internal class Create<#= EntityType.Name #>CommandValidator : AbstractValidator<Create<#= EntityType.Name #>Command>
+internal class Add<#= EntityType.Name #>Validator : AbstractValidator<Add<#= EntityType.Name #>>
 {
-    public Create<#= EntityType.Name #>Validator()
+    public Add<#= EntityType.Name #>Validator()
     {
         //RuleFor(x => x.FirstName).NotEmpty().MaximumLength(FirstName.MaxLength);
 
         //RuleFor(x => x.LastName).NotEmpty().MaximumLength(LastName.MaxLength);
     }
 }
-internal sealed class Create<#= EntityType.Name #>CommandHandler : ICommandHandler<Create<#= EntityType.Name #>Command, <#= code.Reference(firstProperty.ClrType) #>>
+internal sealed class Add<#= EntityType.Name #>Handler : ICommandHandler<Add<#= EntityType.Name #>, <#= code.Reference(firstProperty.ClrType) #>>
 {
     private readonly I<#= EntityType.Name #>Repository _<#= entityNameLower  #>Repository;
-    private readonly IUnitOfWork _unitOfWork;
-
-    public Create<#= EntityType.Name #>CommandHandler(
+     private readonly ILogger<Add<#= EntityType.Name #>Handler> _logger;
+    public Add<#= EntityType.Name #>Handler(
         I<#= EntityType.Name  #>Repository <#= entityNameLower  #>Repository,
-        IUnitOfWork unitOfWork)
+        ILogger<Add<#= EntityType.Name #>Handler> logger
+        )
     {
         _<#= entityNameLower  #>Repository = <#= entityNameLower  #>Repository;
-        _unitOfWork = unitOfWork;
+        _logger = logger;
     }
-public async Task<<#= code.Reference(firstProperty.ClrType) #>> Handle(Create<#= EntityType.Name #>Command request, CancellationToken cancellationToken)
+public async Task<<#= code.Reference(firstProperty.ClrType) #>> Handle(Add<#= EntityType.Name #> request, CancellationToken cancellationToken)
 {
 var <#= entityNameLower  #> = <#= EntityType.Name #>.Create(
 <# 
@@ -108,13 +108,12 @@ request.<#= cPropertyNameLower #><#= lastprop #>
 <#
     }
 #>);
-var entity = await _<#= entityNameLower  #>Repository.AddAsync(<#= entityNameLower  #>,cancellationToken);
-await _unitOfWork.SaveChangesAsync(cancellationToken);
-return entity.<#= firstProperty.Name #>;
+  await _<#= entityNameLower  #>Repository.AddAsync(<#= entityNameLower  #>,cancellationToken);
+  return <#= entityNameLower  #>.<#= firstProperty.Name #>;
  }
 }
 /// Update
-public sealed record Update<#= EntityType.Name #>Command(
+public sealed record Update<#= EntityType.Name #>(
 <# 
    foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
     {
@@ -134,7 +133,7 @@ public sealed record Update<#= EntityType.Name #>Command(
     }
 #>
 ) : ICommand<<#= code.Reference(firstProperty.ClrType) #>>;
-internal class Update<#= EntityType.Name #>CommandValidator : AbstractValidator<Update<#= EntityType.Name #>Command>
+internal class Update<#= EntityType.Name #>Validator : AbstractValidator<Update<#= EntityType.Name #>>
 {
     public Update<#= EntityType.Name #>Validator()
     {
@@ -143,17 +142,17 @@ internal class Update<#= EntityType.Name #>CommandValidator : AbstractValidator<
         //RuleFor(x => x.LastName).NotEmpty().MaximumLength(LastName.MaxLength);
     }
 }
-internal sealed class Update<#= EntityType.Name #>CommandHandler : ICommandHandler<Update<#= EntityType.Name #>Command, <#= code.Reference(firstProperty.ClrType) #>>
+internal sealed class Update<#= EntityType.Name #>Handler : ICommandHandler<Update<#= EntityType.Name #>, <#= code.Reference(firstProperty.ClrType) #>>
 {
     private readonly I<#= EntityType.Name #>Repository _<#= entityNameLower  #>Repository;
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly ILogger<Update<#= EntityType.Name #>Handler> _logger;
 
     public Create<#= EntityType.Name #>CommandHandler(
         I<#= EntityType.Name  #>Repository <#= entityNameLower  #>Repository,
-        IUnitOfWork unitOfWork)
+        ILogger<Update<#= EntityType.Name #>Handler> logger)
     {
         _<#= entityNameLower  #>Repository = <#= entityNameLower  #>Repository;
-        _unitOfWork = unitOfWork;
+        _logger = logger;
     }
 public async Task<<#= code.Reference(firstProperty.ClrType) #>> Handle(Update<#= EntityType.Name #>Command request, CancellationToken cancellationToken)
 {
@@ -176,9 +175,8 @@ request.<#= cPropertyNameLower #><#= lastprop #>
 <#
     }
 #>);
-var entity = await _<#= entityNameLower  #>Repository.UpdateAsync(<#= entityNameLower  #>,cancellationToken);
-await _unitOfWork.SaveChangesAsync(cancellationToken);
-return entity.<#= firstProperty.Name #>;
+    await _<#= entityNameLower  #>Repository.UpdateAsync(<#= entityNameLower  #>,cancellationToken);
+    return <#= entityNameLower  #>.<#= firstProperty.Name #>;
  }
 }
 <#
