@@ -50,11 +50,11 @@ namespace <#= entityNamespace #>;
 
 public interface I<#= EntityType.Name #>Repository
 {
-  Task<IEnumerable<<#= EntityType.Name #>>> AllAsync(CancellationToken cancellationToken = default);
-  Task<<#= EntityType.Name #>?> AddAsync (<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default);
-  Task <<#= EntityType.Name  #>?> FindByIdAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default);
-  Task<<#= EntityType.Name #>?> UpdateAsync(<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default);
-  Task<<#= code.Reference(firstProperty.ClrType) #>> DeleteAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default);
+  Task<IEnumerable<<#= EntityType.Name #>>> BrowseAsync(CancellationToken cancellationToken = default);
+  Task AddAsync (<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default);
+  Task <<#= EntityType.Name  #>?> GetAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default);
+  Task UpdateAsync(<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default);
+  Task DeleteAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default);
 }
 <#
     var previousOutput = GenerationEnvironment;

@@ -1,9 +1,8 @@
-<#@ template debug="true" hostSpecific="true" #>
+<#@ template hostSpecific="true" #>
 <#@ assembly name="Microsoft.EntityFrameworkCore" #>
 <#@ assembly name="Microsoft.EntityFrameworkCore.Design" #>
 <#@ assembly name="Microsoft.EntityFrameworkCore.Relational" #>
 <#@ assembly name="Microsoft.Extensions.DependencyInjection.Abstractions" #>
-<#@ assembly name="Humanizer" #>
 <#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
 <#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
 <#@ parameter name="NamespaceHint" type="System.String" #>
@@ -14,10 +13,7 @@
 <#@ import namespace="Microsoft.EntityFrameworkCore" #>
 <#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
 <#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
-<#@ import namespace="Humanizer" #>
-
 <#
-///if(!System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Launch();
     // Template version: 703 - please do NOT remove this line
     if (EntityType.IsSimpleManyToManyJoinEntityType())
     {
@@ -69,54 +65,8 @@ namespace <#= NamespaceHint #>;
         }
     }
 #>
-internal class <#= EntityType.Name #>
+public class <#= EntityType.Name #>DTO
 {
-<# 
-    foreach (var navigation in EntityType.GetNavigations())
-        {
-        var readtargetType = navigation.TargetEntityType.Name;
-        if (navigation.IsCollection)
-            {
-            var collectionName =navigation.Name.ToString().ToLower();
-#>
-private readonly List<<#= readtargetType #>> _<#= collectionName #> = new();
-<#
-            }
-        }
-#>
-private <#= EntityType.Name #>(
-<#   
-foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
-    {
-    string lastprop = string.Empty;
-    var cPropertyNameLower= property.Name.ToString().Camelize();
-    if (property == EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).Last())
-        {
-        lastprop=string.Empty;
-        }
-        else
-        {
-        lastprop=",";
-        }
-#>
-    <#= code.Reference(property.ClrType) #> <#= cPropertyNameLower #><#= lastprop #>  
-<#
-    }
-#>
-)
-{
-<#   
-foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
-    {
-    var lastProperty = false;
-    var propertyNameLower= property.Name.ToString().Camelize();
-    
-#>
-    <#= property.Name #> = <#= propertyNameLower #>;  
-<#
-    }
-#>
-}
 <#
     var firstProperty = true;
     foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
@@ -141,7 +91,8 @@ foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrde
                 .Where(a => !(a.Type == typeof(RequiredAttribute) && Options.UseNullableReferenceTypes && !property.ClrType.IsValueType));
             foreach (var dataAnnotation in dataAnnotations)
             {
-#><#= code.Fragment(dataAnnotation) #>
+#>
+    <#= code.Fragment(dataAnnotation) #>
 <#
             }
         }
@@ -151,7 +102,7 @@ foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrde
         var needsNullable = Options.UseNullableReferenceTypes && property.IsNullable && !property.ClrType.IsValueType;
         var needsInitializer = Options.UseNullableReferenceTypes && !property.IsNullable && !property.ClrType.IsValueType;
 #>
-public <#= code.Reference(property.ClrType) #><#= needsNullable ? "?" : "" #> <#= property.Name #> { get; private set; }<#= needsInitializer ? " = null!;" : "" #>
+    public <#= code.Reference(property.ClrType) #><#= needsNullable ? "?" : "" #> <#= property.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
 <#
         firstProperty = false;
     }
@@ -173,9 +124,8 @@ public <#= code.Reference(property.ClrType) #><#= needsNullable ? "?" : "" #> <#
         var targetType = navigation.TargetEntityType.Name;
         if (navigation.IsCollection)
         {
-        var collectName=navigation.Name.ToString().ToLower();
 #>
-   public IReadOnlyCollection<<#= targetType #>> <#= navigation.Name #> => _<#= collectName #>;
+    public List<<#= targetType #>DTO> <#= navigation.Name #> { get; set; } = new List<<#= targetType #>DTO>();
 <#
         }
         else
@@ -183,7 +133,7 @@ public <#= code.Reference(property.ClrType) #><#= needsNullable ? "?" : "" #> <#
             var needsNullable = Options.UseNullableReferenceTypes && !(navigation.ForeignKey.IsRequired && navigation.IsOnDependent);
             var needsInitializer = Options.UseNullableReferenceTypes && navigation.ForeignKey.IsRequired && navigation.IsOnDependent;
 #>
-public <#= targetType #><#= needsNullable ? "?" : "" #> <#= navigation.Name #> { get; private set; }<#= needsInitializer ? " = null!;" : "" #>
+    public <#= targetType #>DTO<#= needsNullable ? "?" : "" #> <#= navigation.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
 <#
         }
     }
@@ -202,53 +152,10 @@ public <#= targetType #><#= needsNullable ? "?" : "" #> <#= navigation.Name #> {
             }
         }
 #>
-public virtual ICollection<<#= skipNavigation.TargetEntityType.Name #>> <#= skipNavigation.Name #> { get; set; } = new List<<#= skipNavigation.TargetEntityType.Name #>>();
+    public List<<#= skipNavigation.TargetEntityType.Name #>DTO> <#= skipNavigation.Name #> { get; set; } = new List<<#= skipNavigation.TargetEntityType.Name #>DTO>();
 <#
     }
 #>
-public static <#= EntityType.Name #> Create(
-<# 
-var entityNameLower = EntityType.Name.ToString().ToLower();
-foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
-    {
-    string lastprop = string.Empty;
-    var cPropertyNameLower= property.Name.ToString().Camelize();
-    if (property == EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).Last())
-        {
-        lastprop=string.Empty;
-        }
-        else
-        {
-        lastprop=",";
-        }
-#>
-<#= code.Reference(property.ClrType) #> <#= cPropertyNameLower #><#= lastprop #>  
-<#
-    }
-#>
- )
- {
- var <#= entityNameLower  #> = new <#= EntityType.Name  #>(
- <# 
- foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
-    {
-    string lastprop = string.Empty;
-    var cPropertyNameLower= property.Name.ToString().Camelize();
-    if (property == EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1).Last())
-        {
-        lastprop=string.Empty;
-        }
-        else
-        {
-        lastprop=",";
-        }
- #>
- <#= cPropertyNameLower #><#= lastprop #>  
- <# }  #>
- );
- return <#= entityNameLower  #>;
- <#   #>
- }
 }
 <#
     var previousOutput = GenerationEnvironment;

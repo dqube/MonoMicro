@@ -53,33 +53,41 @@ namespace <#= entityNamespace #>;
 public sealed class <#= EntityType.Name #>Repository : I<#= EntityType.Name #>Repository
 {
 private readonly <#= Options.ContextName #> _dbContext;
-public <#= EntityType.Name #>Repository(<#= Options.ContextName #> dbContext) =>
+private readonly DbSet<<#= EntityType.Name #>> _<#= entityNameLower #>s;
+public <#= EntityType.Name #>Repository(<#= Options.ContextName #> dbContext) 
+{
         _dbContext = dbContext;
+        _<#= entityNameLower #>s = _dbContext.<#= EntityType.Name #>s;
+}
 
-public async Task<IEnumerable<<#= EntityType.Name #>>> AllAsync(CancellationToken cancellationToken = default) =>
-    await _dbContext
-            .Set<<#= EntityType.Name  #>>()
+public async Task<IEnumerable<<#= EntityType.Name #>>> BrowseAsync(CancellationToken cancellationToken = default) =>
+    await _<#= entityNameLower #>s
             .ToListAsync(cancellationToken);
 
-public async Task<<#= EntityType.Name  #>?> FindByIdAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default) =>
-    await _dbContext
-            .Set<<#= EntityType.Name  #>>()
+public async Task<<#= EntityType.Name  #>?> GetAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default) =>
+    await _<#= entityNameLower #>s
             .FirstOrDefaultAsync(ent => ent.<#= firstProperty.Name  #> == id, cancellationToken);
 
-public async Task<<#= EntityType.Name  #>?> AddAsync (<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default) 
+public async Task AddAsync (<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default) 
 {
-    await _dbContext
-            .Set<<#= EntityType.Name  #>>()
+    await _<#= entityNameLower #>s
             .AddAsync(<#= entityNameLower #>, cancellationToken);
+    await _dbContext.SaveChangesAsync();
             return <#= entityNameLower #>;
+           
 }
-public async Task<<#= EntityType.Name  #>?> UpdateAsync(<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default) 
+public async Task UpdateAsync(<#= EntityType.Name #> <#= entityNameLower #>, CancellationToken cancellationToken = default) 
 {
-    throw new NotImplementedException();
+    _<#= entityNameLower #>s.Update(<#= entityNameLower #>);
+    await _dbContext.SaveChangesAsync();
 }      
- public async Task<<#= code.Reference(firstProperty.ClrType) #>> DeleteAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default)
+ public async Task DeleteAsync(<#= code.Reference(firstProperty.ClrType) #> id, CancellationToken cancellationToken = default)
  {
-     throw new NotImplementedException();
+      var <#= entityNameLower #> = await _<#= entityNameLower #>s.FirstOrDefaultAsync(ent => ent.<#= firstProperty.Name  #> == id, cancellationToken);
+      if(<#= entityNameLower #> is not null)
+      {
+        _<#= entityNameLower #>s.Remove(<#= entityNameLower #>);
+      }
  }
 }
 <#

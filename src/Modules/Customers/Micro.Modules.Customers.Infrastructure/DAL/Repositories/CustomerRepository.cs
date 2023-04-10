@@ -17,21 +17,21 @@ internal class CustomerRepository : ICustomerRepository
         _customers = _context.Customers;
     }
 
-    public Task<Customer> GetAsync(CustomerId id)
+    public Task<Customer> GetAsync(CustomerId id, CancellationToken cancellationToken = default)
         => _customers
-           .SingleOrDefaultAsync(x => x.Id == id);
+           .SingleOrDefaultAsync(x => x.Id == id,cancellationToken);
 
 
 
-    public async Task AddAsync(Customer customer)
+    public async Task AddAsync(Customer customer, CancellationToken cancellationToken = default)
     {
-        await _customers.AddAsync(customer);
+        await _customers.AddAsync(customer,cancellationToken);
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(Customer customer)
+    public async Task UpdateAsync(Customer customer, CancellationToken cancellationToken = default)
     {
-        _customers.Update(customer);
+        _customers.Update(customer);        
         await _context.SaveChangesAsync();
     }
 }
