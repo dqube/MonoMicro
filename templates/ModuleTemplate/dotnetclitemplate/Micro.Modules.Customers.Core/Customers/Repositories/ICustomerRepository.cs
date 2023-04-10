@@ -5,7 +5,7 @@ namespace Micro.Modules.Customers.Core.Customers.Repositories;
 
 internal interface ICustomerRepository
 {
-    Task<Customer> GetAsync(CustomerId id);
-    Task AddAsync(Customer customer);
-    Task UpdateAsync(Customer customer);
+    Task<Customer> GetAsync(CustomerId id, CancellationToken cancellationToken = default);
+    Task AddAsync(Customer customer, CancellationToken cancellationToken = default);
+    Task UpdateAsync(Customer customer, CancellationToken cancellationToken = default);
 }
