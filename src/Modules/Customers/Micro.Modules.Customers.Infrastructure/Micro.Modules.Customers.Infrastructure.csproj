@@ -17,5 +17,9 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\Micro.DAL.SqlServer\Micro.DAL.SqlServer.csproj" />
     <ProjectReference Include="..\Micro.Modules.Customers.Application\Micro.Modules.Customers.Application.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\Migrations\" />
+  </ItemGroup>
+ 
     
 </Project>

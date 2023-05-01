@@ -1,4 +1,9 @@
-﻿namespace Micro.Modules.Customers.Core.Customers.ValueObjects;
+﻿using System.ComponentModel;
+using System.Globalization;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+
+namespace Micro.Modules.Customers.Core.Customers.ValueObjects;
 
 internal record struct CustomerId
 {
@@ -14,4 +19,7 @@ internal record struct CustomerId
 
     public static implicit operator CustomerId(int value)
         => new(value);
+
+    public override string ToString() => Value.ToString();
+  
 }

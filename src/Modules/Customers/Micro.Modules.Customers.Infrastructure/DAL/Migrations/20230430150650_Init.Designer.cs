@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Micro.Modules.Customers.Infrastructure.DAL.Migrations
 {
     [DbContext(typeof(CustomersDbContext))]
-    [Migration("20230406215514_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230430150650_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,8 @@ namespace Micro.Modules.Customers.Infrastructure.DAL.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CustomerId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 

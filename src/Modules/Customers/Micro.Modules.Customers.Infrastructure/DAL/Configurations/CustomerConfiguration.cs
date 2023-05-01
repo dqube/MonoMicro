@@ -14,9 +14,9 @@ internal class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         //builder.Property(x => x.Version).IsConcurrencyToken();
         //builder.HasOne<Owner>().WithMany().HasForeignKey(x => x.OwnerId);
         builder.ToTable("Customers", "customers");
-        builder.Ignore(c => c.DomainEventVersion);
         builder.HasKey(e => e.Id);
         builder.Property(x => x.Id)
+            .HasColumnName(nameof(CustomerId))
             .HasConversion(x => x.Value, x => new CustomerId(x))
             .ValueGeneratedOnAdd();
 

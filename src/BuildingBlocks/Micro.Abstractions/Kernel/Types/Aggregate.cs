@@ -1,39 +1,27 @@
-﻿namespace Micro.Abstractions.Kernel.Types;
-public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Micro.Abstractions.Kernel.Types;
+public abstract class Aggregate<TId> : Entity<TId>
     where TId : notnull
 {
-
-    public int DomainEventVersion { get; protected set; }
-    public long Version { get; set; } = -1;
+   
 
     private readonly List<IDomainEvent> _domainEvents = new();
     public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
-
-    private bool _versionIncremented;
-    protected Aggregate(TId id) : base(id)
+    public new TId Id { get; protected set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    protected Aggregate()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
+        
     }
-    protected void AddDomainEvent(IDomainEvent @event)
+    protected Aggregate(TId id):base(id) 
     {
-        if (!_domainEvents.Any() && !_versionIncremented) // Only one version up when update/create aggregate
-        {
-            DomainEventVersion++;
-            _versionIncremented = true;
-        }
-
-        _domainEvents.Add(@event);
+        Id = id;    
     }
+   
 
-    public void ClearDomainEvents() => _domainEvents.Clear();
+    
 
-    protected void IncrementVersion()
-    {
-        if (_versionIncremented)
-        {
-            return;
-        }
-
-        DomainEventVersion++;
-        _versionIncremented = true;
-    }
+   
 }

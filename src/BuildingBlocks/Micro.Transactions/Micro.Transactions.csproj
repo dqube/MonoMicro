@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Micro.Abstractions\Micro.Abstractions.csproj" />
-      <ProjectReference Include="..\Micro.DAL.Postgres\Micro.DAL.Postgres.csproj" />
+      <ProjectReference Include="..\Micro.DAL.SqlServer\Micro.DAL.SqlServer.csproj" />
       <ProjectReference Include="..\Micro.Messaging\Micro.Messaging.csproj" />
     </ItemGroup>
 

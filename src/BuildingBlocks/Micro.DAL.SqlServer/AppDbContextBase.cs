@@ -20,44 +20,44 @@ public abstract class AppDbContextBase : DbContext, IDbContext
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
-    {
-        if (_currentTransaction != null) return;
+    //public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
+    //{
+    //    if (_currentTransaction != null) return;
 
-        _currentTransaction = await Database.BeginTransactionAsync(IsolationLevel.ReadCommitted, cancellationToken);
-    }
+    //    _currentTransaction = await Database.BeginTransactionAsync(IsolationLevel.ReadCommitted, cancellationToken);
+    //}
 
-    public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
-    {
-        try
-        {
-            await SaveChangesAsync(cancellationToken);
-            await _currentTransaction?.CommitAsync(cancellationToken)!;
-        }
-        catch
-        {
-            await RollbackTransactionAsync(cancellationToken);
-            throw;
-        }
-        finally
-        {
-            _currentTransaction?.Dispose();
-            _currentTransaction = null;
-        }
-    }
+    //public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
+    //{
+    //    try
+    //    {
+    //        await SaveChangesAsync(cancellationToken);
+    //        await _currentTransaction?.CommitAsync(cancellationToken)!;
+    //    }
+    //    catch
+    //    {
+    //        await RollbackTransactionAsync(cancellationToken);
+    //        throw;
+    //    }
+    //    finally
+    //    {
+    //        _currentTransaction?.Dispose();
+    //        _currentTransaction = null;
+    //    }
+    //}
 
-    public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
-    {
-        try
-        {
-            await _currentTransaction?.RollbackAsync(cancellationToken)!;
-        }
-        finally
-        {
-            _currentTransaction?.Dispose();
-            _currentTransaction = null;
-        }
-    }
+    //public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
+    //{
+    //    try
+    //    {
+    //        await _currentTransaction?.RollbackAsync(cancellationToken)!;
+    //    }
+    //    finally
+    //    {
+    //        _currentTransaction?.Dispose();
+    //        _currentTransaction = null;
+    //    }
+    //}
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
@@ -68,7 +68,7 @@ public abstract class AppDbContextBase : DbContext, IDbContext
     public IReadOnlyList<IDomainEvent> GetDomainEvents()
     {
         var domainEntities = ChangeTracker
-            .Entries<IAggregate>()
+            .Entries<IEntity>()
             .Where(x => x.Entity.DomainEvents.Any())
             .Select(x => x.Entity)
             .ToList();
@@ -95,9 +95,9 @@ public abstract class AppDbContextBase : DbContext, IDbContext
 
         long.TryParse(nameIdentifier, out var userId);
 
-        foreach (var entry in ChangeTracker.Entries<IAggregate>())
+        foreach (var entry in ChangeTracker.Entries<IEntity>())
         {
-            var isAuditable = entry.Entity.GetType().IsAssignableTo(typeof(IAggregate));
+            var isAuditable = entry.Entity.GetType().IsAssignableTo(typeof(IEntity));
 
             if (isAuditable)
                 switch (entry.State)

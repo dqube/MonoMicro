@@ -9,6 +9,7 @@ using Micro.Modules.Customers.Application.Customers.Queries;
 using Micro.Modules.Customers.Application.Customers.DTO;
 using Micro.Modules.Customers.Application.Customers;
 using Micro.Abstractions.Pagination;
+using Microsoft.Extensions.Configuration;
 
 namespace Micro.Modules.Customers.Api;
 
@@ -21,12 +22,12 @@ internal class CustomersModule : IModule
         "transfers", "customers"
     };
 
-    public void Register(IServiceCollection services)
+    public void Register(IServiceCollection services, IConfiguration configuration)
     {
         services
         .AddDomain()
             .AddApplication()
-            .AddInfrastructure();
+            .AddInfrastructure(configuration);
     }
 
     public void Use(IApplicationBuilder app)

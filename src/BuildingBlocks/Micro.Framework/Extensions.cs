@@ -22,6 +22,7 @@ using Micro.Observability.Logging;
 using Micro.Security;
 using Micro.Security.Vault;
 using Micro.Storage;
+using Micro.Transactions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
@@ -59,10 +60,11 @@ public static class Extensions
         }
         builder.Services
             .AddSqlServerModule();
+           //.AddMSSqlServer();
 
         foreach (var module in _modules)
         {
-            module.Register(builder.Services);
+            module.Register(builder.Services, configuration);
         }
         //builder.AddFramework();
         builder.AddVault();
@@ -83,6 +85,7 @@ public static class Extensions
             .AddDispatchers()
             .AddContexts()
             .AddMemoryCache()
+            .AddTransactionalDecorators()
             .AddHttpContextAccessor()
             .AddMicro(builder.Configuration)
             //.AddAuth(builder.Configuration)
@@ -163,6 +166,7 @@ public static class Extensions
             .AddSecurity(builder.Configuration)
             .AddLogger(builder.Configuration)
             .AddObservability(builder.Configuration)
+            .AddTransactionalDecorators()
             .AddContracts();
 
         builder.Services

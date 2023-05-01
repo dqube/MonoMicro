@@ -46,18 +46,18 @@ public static class Extensions
         
         app.UseSwagger();
 
-        //app.UseSwaggerUI(reDoc =>
-        //{
-        //    reDoc.RoutePrefix = string.IsNullOrWhiteSpace(options.Route) ? "swagger" : options.Route;
-        //    reDoc.SwaggerEndpoint($"/swagger/{options.Version}/swagger.json",options.Version);
-        //    reDoc.DocumentTitle = options.Title;
-        //});
-        app.UseReDoc(reDoc =>
+        app.UseSwaggerUI(reDoc =>
         {
             reDoc.RoutePrefix = string.IsNullOrWhiteSpace(options.Route) ? "swagger" : options.Route;
-            reDoc.SpecUrl($"/swagger/{options.Version}/swagger.json");
+            reDoc.SwaggerEndpoint($"/swagger/{options.Version}/swagger.json", options.Version);
             reDoc.DocumentTitle = options.Title;
         });
+        //app.UseReDoc(reDoc =>
+        //{
+        //    reDoc.RoutePrefix = string.IsNullOrWhiteSpace(options.Route) ? "swagger" : options.Route;
+        //    reDoc.SpecUrl($"/swagger/{options.Version}/swagger.json");
+        //    reDoc.DocumentTitle = options.Title;
+        //});
 
         return app;
     }

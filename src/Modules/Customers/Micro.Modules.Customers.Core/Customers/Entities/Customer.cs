@@ -5,15 +5,19 @@ namespace Micro.Modules.Customers.Core.Customers.Entities;
 
 internal class Customer : Aggregate<CustomerId>
 {
-    private Customer(CustomerId id, string name) : base(id)
+    private Customer()
+    {
+
+    }
+    private Customer(CustomerId customerId, string name) : base(customerId)
     {
         Name = name;
-        Id= id;
+       // Id= id;
     }
     
 
     public string Name { get; private set; }
-    public CustomerId Id { get; private set; }
+   // public CustomerId Id { get; private set; }
 
     public static Customer Create(CustomerId customerId, string name)
     {

@@ -1,5 +1,4 @@
 ﻿using Micro.Abstractions;
-using Micro.DAL.SqlServer;
 
 namespace Micro.DAL.SqlServer;
 
