@@ -6,6 +6,7 @@ using Micro.API.CORS;
 using Micro.API.Exceptions;
 using Micro.API.Networking;
 using Micro.API.Swagger;
+using Micro.API.Validations;
 using Micro.Auth;
 using Micro.Contexts;
 using Micro.Contracts;
@@ -88,6 +89,8 @@ public static class Extensions
             .AddTransactionalDecorators()
             .AddHttpContextAccessor()
             .AddMicro(builder.Configuration)
+         .AddValidations(builder.Configuration,_assemblies)
+
             //.AddAuth(builder.Configuration)
             .AddCorsPolicy(builder.Configuration)
             .AddSwaggerDocs(builder.Configuration)
