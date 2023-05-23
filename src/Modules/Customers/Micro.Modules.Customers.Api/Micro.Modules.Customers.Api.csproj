@@ -10,7 +10,13 @@
     <None Remove="module.customers.development.json" />
     <None Remove="module.customers.json" />
   </ItemGroup>
-
+  <ItemGroup>
+    <InternalsVisibleTo Include="Micro.Modules.Customers.Tests.Contract"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Customers.Tests.EndToEnd"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Customers.Tests.Integration"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="Micro.Modules.Customers.Tests.Unit"></InternalsVisibleTo>
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2"></InternalsVisibleTo>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="module.customers.development.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
